@@ -15,6 +15,7 @@ set autoindent                          " Good auto indent
 set noexpandtab
 "set expandtab                           " Converts tabs to spaces
 "
+autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2 noexpandtab
 autocmd FileType sh setlocal shiftwidth=2 tabstop=2 softtabstop=2 noexpandtab
 autocmd FileType c setlocal shiftwidth=8 tabstop=8 softtabstop=8 noexpandtab
 
