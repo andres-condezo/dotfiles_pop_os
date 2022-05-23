@@ -8,6 +8,7 @@ export ZSH="/home/adrsp/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 # Set spacship prompt
 
+SPACESHIP_MODE='nerdfont-complete'
 SPACESHIP_PROMPT_ADD_NEWLINE=false
 SPACESHIP_PROMPT_SEPARATE_LINE=false
 SPACESHIP_USER_SHOW=always
@@ -103,10 +104,15 @@ alias open="xdg-open"
 alias gdf='/usr/bin/git --git-dir=/home/adrs/dotfilesManjaro --work-tree=/home/adrs'
 alias treel='ls-tree -r master --name-only'
 alias hol='cd ~/Documents/holberton/'
+alias micro='cd ~/Documents/microverse/'
+alias cursos='cd ~/Documents/cursos'
 alias rng='ranger'
 alias py='python3'
 alias ipy='ipython3'
 alias aenv='source venv/bin/activate'
+alias amyenv='source myenv/bin/activate'
+alias last='ls -last'
+alias ecom='cd ~/Documents/Freelance/ecommerce/ecommerce'
 
 #---------------------------------------------------------------
 #------------------- FUNCTIONS ----------------------------------
@@ -182,3 +188,10 @@ export SPICETIFY_INSTALL="/home/adrsp/spicetify-cli"
 export PATH="$SPICETIFY_INSTALL:$PATH"
 
 #. /etc/profile.d/vte.sh
+export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/.rbenv/bin:$PATH"
+
+eval "$(rbenv init - zsh)"
+
+xsetwacom set "Wacom Intuos S 2 Pen stylus" Button 2 "pan"
+xsetwacom --set "Wacom Intuos S 2 Pen stylus" "PanScrollThreshold" 200

@@ -1,5 +1,5 @@
-nmap <space>e :CocCommand explorer<CR>
-nmap <space>f :CocCommand explorer --preset floating<CR>
+nmap <space>ee :CocCommand explorer<CR>
+nmap <space>ef :CocCommand explorer --preset floating<CR>
 autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 
 let g:coc_explorer_global_presets = {

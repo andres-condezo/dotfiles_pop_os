@@ -52,7 +52,7 @@ map <C-m> <C-y>
 "----------------------------------  SPLITS -------------------------------------------------------
 
 " Remove pipes
-set fillchars+=vert:\		"remove pipe and add a space
+set fillchars+=vert:\  "remove pipe and add a space
 
 " Splits
 nnoremap <Leader>h :split<CR>

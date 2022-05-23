@@ -14,7 +14,7 @@ set nocompatible
 set numberwidth=1
 set showcmd
 set showmatch
-set laststatus=2
+" set laststatus=2
 set title
 syntax enable                           " Enables syntax highlighting
 set spelllang=en,es                     " Corregir palabras usando diccionarios en inglés y español
@@ -30,8 +30,8 @@ set mouse=a                             " Enable your mouse
 set splitbelow                          " Horizontal splits will automatically be below
 set splitright                          " Vertical splits will automatically be to the right
 set t_Co=256                            " Support 256 colors
-set conceallevel=0                      " So that I can see `` in markdown files
-set laststatus=0                        " Always display the status line
+set conceallevel=1                      " So that I can see `` in markdown files
+set laststatus=1                        " Always display the status line
 set cursorline                          " Enable highlighting of the current line
 set background=dark                     " tell vim what the background color looks like
 set hidden                              " Permitir cambiar de buffers sin tener que guardarlos
@@ -63,8 +63,9 @@ set list
 
 "--------------------------------------------------------------------------------------------------
 "----------------------------- absolute, relative and hybrid line numbers -------------------------
-
-set number relativenumber
+" set norelativenumber
+set number
+" set number relativenumber
 
 " augroup numbertoggle
 "   autocmd!

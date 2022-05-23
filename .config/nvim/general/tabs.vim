@@ -2,20 +2,21 @@
 "-------------------------------- TABS ------------------------------------------------------------
 
 " Indentación a 2 espacios
-set tabstop=8
-set shiftwidth=8
-"set shiftwidth=2                        " Change the number of space characters inserted for indentation
-set softtabstop=8
+set tabstop=2
+set shiftwidth=2                        " Change the number of space characters inserted for indentation
+set softtabstop=2
 set shiftround
 set smarttab                            " Makes tabbing smarter will realize you have 2 vs 4
 
 set smartindent                         " Makes indenting smart
 set autoindent                          " Good auto indent
 
-set noexpandtab
-"set expandtab                           " Converts tabs to spaces
-"
-autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2 noexpandtab
+"set noexpandtab
+set expandtab                           " Converts tabs to spaces
+
+autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+autocmd FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+autocmd FileType js setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 autocmd FileType sh setlocal shiftwidth=2 tabstop=2 softtabstop=2 noexpandtab
 autocmd FileType c setlocal shiftwidth=8 tabstop=8 softtabstop=8 noexpandtab
 
@@ -24,6 +25,8 @@ autocmd FileType c setlocal shiftwidth=8 tabstop=8 softtabstop=8 noexpandtab
 "-------------------------------- COLUMN lIMITS ------------------------------------------------------------
 
 autocmd FileType c setlocal  colorcolumn=80
+autocmd FileType py setlocal  colorcolumn=79
+autocmd FileType js setlocal  colorcolumn=80
 autocmd FileType vim setlocal  colorcolumn=0 expandtab
 "let w:m1=matchadd('ErrorMsg', '\%>80v.\+', -1)
 "set colorcolumn=+1

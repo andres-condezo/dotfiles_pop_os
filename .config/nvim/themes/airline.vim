@@ -11,10 +11,10 @@ let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 
 " Switch to your current theme
-"let g:airline_theme = 'onedark'
-let g:airline_theme = 'nord'
+" let g:airline_theme = 'onedark'
+" let g:airline_theme = 'nord'
 " let g:airline_theme = 'gruvbox'
-"let g:airline_theme = "tokyonight"
+let g:airline_theme = 'tokyonight'
 
 " Always show tabs
 "set showtabline=2
