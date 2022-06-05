@@ -40,6 +40,7 @@ set nowritebackup                       " This is recommended by coc
 set updatetime=300                      " Faster completion
 set timeoutlen=500                      " By default timeout Len is 1000 ms
 set formatoptions-=cro                  " Stop newline continuation of comments
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o "To disable for all files and sessions
 set autochdir                           " Your working directory will always be the same as your working directory
 set clipboard+=unnamedplus
 
