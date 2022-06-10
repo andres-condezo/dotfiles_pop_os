@@ -109,6 +109,7 @@ font:
     #family: Curie
     #family: Source Code Pro
      family: UbuntuMono
+     # family: Droid
     # The `style` can be specified to pick a specific face.
     #style: Retina
 
@@ -242,7 +243,9 @@ bell:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.99
+# background_opacity: 0.99
+window:
+  opacity: 0.9
 
 # Mouse bindings
 #

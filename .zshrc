@@ -102,7 +102,8 @@ alias pcli="xclip -out"
 alias cpwd="pwd | tr -d '\n' | xclip && echo 'pwd copied to clipboard'"
 alias open="xdg-open"
 alias gdf='/usr/bin/git --git-dir=/home/adrs/dotfilesManjaro --work-tree=/home/adrs'
-alias treel='ls-tree -r master --name-only'
+# alias treel='ls-tree -r dev --name-only'
+alias treel='exa --tree --level=2 --icons --long'
 alias hol='cd ~/Documents/holberton/'
 alias micro='cd ~/Documents/microverse/'
 alias cursos='cd ~/Documents/cursos'
@@ -110,9 +111,11 @@ alias rng='ranger'
 alias py='python3'
 alias ipy='ipython3'
 alias aenv='source venv/bin/activate'
-alias amyenv='source myenv/bin/activate'
-alias last='ls -last'
+alias last='exa --long --icons -a'
+alias ls='exa --icons'
+alias tree='exa --tree --level=2 --icons'
 alias ecom='cd ~/Documents/Freelance/ecommerce/ecommerce'
+alias pwdf='echo '-------------' && pwd && echo '-------------' && ls'
 
 #---------------------------------------------------------------
 #------------------- FUNCTIONS ----------------------------------

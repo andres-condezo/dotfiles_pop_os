@@ -82,4 +82,4 @@ let mapleader=" "
 autocmd bufwritepost *.js silent !semistandard % --fix
 set autoread
 
-let g:python3_host_prog='/home/adrsp/Documents/platzi/platzi-flask/venv/bin/python'
+" let g:python3_host_prog='/home/adrsp/Documents/platzi/platzi-flask/venv/bin/python'

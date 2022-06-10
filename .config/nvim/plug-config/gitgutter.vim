@@ -7,7 +7,7 @@ nmap <Leader>gz :GitGutterFold<CR>
 command! Gqf GitGutterQuickFix | copen
 nmap <Leader>gqf :Gqf<CR>
 
-let g:gitgutter_preview_win_floating = 0
+let g:gitgutter_preview_win_floating = 1
 let g:gitgutter_use_location_list = 0
 
 function! GitStatus()
