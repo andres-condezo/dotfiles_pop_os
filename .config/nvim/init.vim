@@ -32,6 +32,10 @@ source $HOME/.config/nvim/plug-config/syntastic.vim
 source $HOME/.config/nvim/plug-config/easymotion.vim
 source $HOME/.config/nvim/plug-config/rubocop.vim
 
+" Lua Plugins
+lua require('adrs')
+
+
 "------------------------------------------------------------------------
 "------------------------ Settings --------------------------------------
 
