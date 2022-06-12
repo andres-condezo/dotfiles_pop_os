@@ -94,6 +94,35 @@ Plug 'mattn/emmet-vim'
 " Plug 'pangloss/vim-javascript'
 " Plug 'mxw/vim-jsx'
 
+Plug 'jelera/vim-javascript-syntax'
+Plug 'mxw/vim-jsx'
+Plug 'elzr/vim-json'
+
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+"CSS pick colors
+Plug 'kabbAmine/vCoolor.vim'
+
+" Plug 'shmargum/vim-sass-colors'
+
+Plug 'petertriho/nvim-scrollbar'
+
+Plug 'kevinhwang91/nvim-hlslens'
+
+Plug 'dsummersl/nvim-sluice'
+
+Plug 'vim-ruby/vim-ruby'
+
+Plug 'tpope/vim-rails'
+
+Plug 'Shougo/neocomplete.vim'
+
+Plug 'tpope/vim-surround'
+
+Plug 'kana/vim-textobj-user'
+
+Plug 'https://github.com/whatyouhide/vim-textobj-erb'
+
 "-------------------------------------------------------------------------------------------
 "---------------------------- NEOSNIPPETS --------------------------------------------------
 
