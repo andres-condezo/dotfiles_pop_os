@@ -114,6 +114,7 @@ alias aenv='source venv/bin/activate'
 alias last='exa --long --icons -a'
 alias ls='exa --icons'
 alias tree='exa --tree --level=2 --icons'
+alias cat='ccat'
 alias ecom='cd ~/Documents/Freelance/ecommerce/ecommerce'
 alias pwdf='echo '-------------' && pwd && echo '-------------' && ls'
 
