@@ -1,0 +1,26 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": ["css", "markdown", "graphql", "html", "yaml",  "json", "python"],
+
+  // python config
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+
+  "snippets.ultisnips.directories":
+  [
+    "UltiSnips",
+    "~/.config/nvim/utils/snips"
+  ],
+
+  // explorer
+  "explorer.icon.enableNerdfont": true,
+  "explorer.previewAction.onHover": false,
+  "explorer.keyMappings.global": {
+    "<cr>": ["expandable?", "expand", "open"],
+    "v": "open:vsplit"
+  },
+  "explorer.width": 30,
+  "explorer.buffer.root.template": "",
+  "explorer.file.root.template": "[icon & 1] [root]",
+  "explorer.file.child.template": "[selection | clip | 1] [indent][icon | 1] [diagnosticError & 1][filename omitCenter 1][modified][readonly] [linkIcon & 1][link growRight 1 omitCenter 5]",
+  "explorer.file.showHiddenFiles": false,
+}
