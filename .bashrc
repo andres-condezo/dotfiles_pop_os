@@ -119,11 +119,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/.ff.bash ] && source ~/.fzf.bash
 
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
 export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
-export SPICETIFY_INSTALL="/home/adrsp/spicetify-cli"
-export PATH="$SPICETIFY_INSTALL:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
