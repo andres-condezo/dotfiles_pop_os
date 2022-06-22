@@ -45,7 +45,7 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
-bindkey -M viins 'ii' vi-cmd-mode
+bindkey -M viins 'jk' vi-cmd-mode
 
 # Change cursor shape for different vi modes.
 function zle-keymap-select {
@@ -85,7 +85,7 @@ done
 
 #---------------------------------------------------------------
 #------------------- ALIAS ----------------------------------
-alias ohmyzsh="nvim ~/.oh-my-zsh"
+alias omz="nvim ~/.oh-my-zsh"
 alias c:="cd /media/adrsp/Local"
 alias d:="cd /media/adrsp/Data"
 alias e:='cd "/media/adrsp/TOSHIBA EXT"'
@@ -111,16 +111,18 @@ alias rng='ranger'
 alias py='python3'
 alias ipy='ipython3'
 alias aenv='source venv/bin/activate'
+alias lsl='exa --icons -1'
 alias last='exa --long --icons -a'
-alias ls='exa --icons'
-alias tree='exa --tree --level=2 --icons'
+alias ls='exa --icons --group-directories-first'
+alias tree='exa --tree --group-directories-first --level=1 --icons'
 alias cat='ccat'
 alias ecom='cd ~/Documents/Freelance/ecommerce/ecommerce'
 alias pwdf='echo '-------------' && pwd && echo '-------------' && ls'
+alias dnv='docker start -i mynginx2'
 
 #---------------------------------------------------------------
 #------------------- FUNCTIONS ----------------------------------
-c(){
+compc(){
   folder="compilers/"
   if [[ ! -d $folder   ]]; then
     mkdir $folder
@@ -130,7 +132,8 @@ c(){
   mv $entry $folder
   ./$folder/$entry
 }
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
 ctrlz() {
   if [[ $#BUFFER == 0 ]]; then
     fg >/dev/null 2>&1 && zle redisplay
@@ -170,13 +173,14 @@ bindkey -s '^f' 'rngcd\n'
 #-------------------  BINDKEYS AND EXPORTS ----------------------------------
 
 # bindkey -M menuselect '^M' .accept-line
-bindkey '^y' autosuggest-accept
-LS_COLORS=$LS_COLORS:'tw=01;35:ow=01;35:' ; export LS_COLORS
-export EDITOR='nvim'
-export VISUAL='nvim'
+bindkey '\ey' autosuggest-accept
 # Edit line in vim with ctrl-e:
-autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
+
+LS_COLORS=$LS_COLORS:'tw=01;35:ow=01;35:' ; export LS_COLORS
+# export EDITOR='nvim'
+# export VISUAL='nvim'
+autoload edit-command-line; zle -N edit-command-line
 
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
@@ -194,8 +198,15 @@ export PATH="$SPICETIFY_INSTALL:$PATH"
 #. /etc/profile.d/vte.sh
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
-
 eval "$(rbenv init - zsh)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# export FZF_DEFAULT_COMMAND="fdfind --exclude={.git,.sass-cache} --type f"
+export FZF_DEFAULT_COMMAND='alias ag=ag . --path-to-ignore ~/.ignore'
+
+# source /usr/share/fzf/completion.zsh
+# source /usr/share/fzf/key-bindings.zsh
 
 xsetwacom set "Wacom Intuos S 2 Pen stylus" Button 2 "pan"
 xsetwacom --set "Wacom Intuos S 2 Pen stylus" "PanScrollThreshold" 200
