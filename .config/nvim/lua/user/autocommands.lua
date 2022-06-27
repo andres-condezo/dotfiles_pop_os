@@ -1,3 +1,28 @@
+-- Test function
+_G.myTestFun = function ()
+  local plugin = "My Awesome Plugin"
+
+  vim.notify("This is an error message.\nSomething went wrong!", "error", {
+    title = plugin,
+    on_open = function()
+      vim.notify("Attempting recovery.", vim.log.levels.WARN, {
+        title = plugin,
+      })
+      local timer = vim.loop.new_timer()
+      timer:start(2000, 0, function()
+        vim.notify({ "Fixing problem.", "Please wait..." }, "info", {
+          title = plugin,
+          timeout = 3000,
+          on_close = function()
+            vim.notify("Problem solved", nil, { title = plugin })
+            vim.notify("Error code 0x0395AF", 1, { title = plugin })
+          end,
+        })
+      end)
+    end,
+  })
+end
+
 -- Use 'q' to quit from common plugins
 vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "qf", "help", "man", "lspinfo", "spectre_panel", "lir" },
@@ -45,9 +70,29 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
   end,
 })
 
--- Call reload to apply the latest .vimrc contents
--- command! Reload execute "source ~/.config/nvim/init.vim"
-
+-- Delete all buffers except current one
 vim.cmd "command! BufCurOnly execute '%bdelete|edit#|bdelete#'"
 
+-- Call reload to apply the latest init.lua contents
+_G.reloadSources = function ()
+  vim.cmd('so %')
+  vim.notify("Resources reloaded", "info", { title = "Info"})
+end
+vim.cmd "command! Reload execute 'lua reloadSources()'"
+
+-- Call reload to apply the latest init.lua contents
+_G.savedSession = function ()
+  vim.cmd(':SessionManager save_current_session')
+  vim.notify("Saved session", "info", { title = "Session Manager" })
+end
+
+-- Show date and time
+_G.showDate = function ()
+  local dt = vim.fn.strftime "Date: %e-%b  /  Time: %H:%M"
+  vim.notify(dt, "info", { timeout = 3000, render = "minimal" })
+end
+
 -- vim.cmd "autocmd BufWinLeave *.* mkview"
+
+-- vim.cmd "autocmd! Ufo TextChanged *"
+

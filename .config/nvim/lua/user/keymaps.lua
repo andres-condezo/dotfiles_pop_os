@@ -19,39 +19,21 @@ vim.g.maplocalleader = " "
 
 -- Normal --
 -- Better window navigation
-keymap("n", "<C-A-h>", "<C-w>h", opts)
-keymap("n", "<C-A-j>", "<C-w>j", opts)
-keymap("n", "<C-A-k>", "<C-w>k", opts)
-keymap("n", "<C-A-l>", "<C-w>l", opts)
-
--- Resize with arrows
-keymap("n", "<C-A-Up>", ":resize -2<CR>", opts)
-keymap("n", "<C-A-Down>", ":resize +2<CR>", opts)
-keymap("n", "<C-A-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<C-A-Right>", ":vertical resize +2<CR>", opts)
+keymap("n", "<A-h>", "<C-w>h", opts)
+keymap("n", "<A-j>", "<C-w>j", opts)
+keymap("n", "<A-k>", "<C-w>k", opts)
+keymap("n", "<A-l>", "<C-w>l", opts)
 
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
--- Move text up and down
-keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
-keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
-
 -- Replace
-keymap("n", "<Leader>rp", ":%s//gIc<Left><Left><Left><Left>", visual_opts)
-keymap("n", "<Leader>rr", ":%s//gI<Left><Left><Left>", visual_opts)
+keymap("n", "<Leader>r", ":%s//gIc<Left><Left><Left><Left>", visual_opts)
 
 -- Splits
-keymap("n", "<Leader>hh", ":split<CR>", opts)
+keymap("n", "<Leader>h", ":split<CR>", opts)
 keymap("n", "<Leader>v", ":vsplit<CR>", opts)
-
--- Change splits from vertical to horizontal or vice versa
-keymap("n", "<Leader>hk", "<C-w>t<C-w>H", opts)
-keymap("n", "<Leader>hv", "<C-w>t<C-w>K", opts)
---
--- " " Swap split
-keymap("n", "<C-x>", "<C-w>R", opts)
 
 -- Insert --
 -- Press jk fast to enter
@@ -65,6 +47,8 @@ keymap("v", ">", ">gv", opts)
 -- Move text up and down
 keymap("v", "<A-j>", ":m .+1<CR>==", opts)
 keymap("v", "<A-k>", ":m .-2<CR>==", opts)
+
+-- Paste
 keymap("v", "p", '"_dP', opts)
 
 -- Visual Block --
@@ -83,3 +67,11 @@ keymap("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", opts)
 keymap("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", opts)
 keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", opts)
 keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
+
+-- More --
+
+-- Reload source
+keymap("n", "<A-r>", ":Reload<CR>", opts)
+
+-- comand line
+keymap('n', '<CR>', '<cmd>FineCmdline<CR>', opts)

@@ -78,26 +78,41 @@ local opts = {
   nowait = true, -- use `nowait` when creating keymaps
 }
 
+local colon_opts = {
+  mode = "n", -- NORMAL mode
+  prefix = ",",
+  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true, -- use `silent` when creating keymaps
+  noremap = true, -- use `noremap` when creating keymaps
+  nowait = true, -- use `nowait` when creating keymaps
+}
+
+local v_colon_opts = {
+  mode = "x", -- NORMAL mode
+  prefix = ",",
+  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true, -- use `silent` when creating keymaps
+  noremap = true, -- use `noremap` when creating keymaps
+  nowait = true, -- use `nowait` when creating keymaps
+}
+
 local mappings = {
   ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
+
+  -- ["b"] = { "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>jk",
+  -- "Buffers list" },
+  ["b"] = { "<cmd>lua require'telescope.builtin'.buffers(require('telescope.themes').get_dropdown({}))<cr>jk",
+  "Buffers list" },
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
   ["f"] = {
     "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
-    "Find files",
-  },
+    "Find files" },
   ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
-  ["M"] = { "<Plug>(easymotion-s2)", "Easymotion" },
+  ["o"] = { "<cmd>BufCurOnly<cr>", "Current Only" },
   ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
   ["q"] = { "<cmd>q!<CR>", "Quit" },
   ["Q"] = { "<cmd>qa!<CR>", "Close all windows" },
-
-  b = {
-    name = "Buffers",
-    l = { "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
-    "Buffers list", },
-    c = { "<cmd>BufCurOnly<cr>", "Current Only" },
-  },
 
   d = {
     name = "DAP",
@@ -165,7 +180,7 @@ local mappings = {
     name = "Session",
     d = { "<cmd>SessionManager delete_session<cr>", "Delete session" },
     l = { "<cmd>SessionManager load_session<cr>", "Load session" },
-    s = { "<cmd>SessionManager save_current_session<cr>", "Save session" },
+    s = { "<cmd>lua savedSession()<CR>", "Save session" },
   },
 
   p = {
@@ -202,11 +217,9 @@ local mappings = {
   },
 
   w = {
-    name = "Save / Wrap",
+    name = "Save",
     a = { "<cmd>wa | :qa<CR>", "Save all buffer and exit" },
     e = { "<cmd>wq<CR>", "Save current buffer and close it" },
-    n = { "<cmd>:set nowrap<CR>", "Set no wrap" },
-    r = { "<cmd>:set wrap<CR>", "Set wrap" },
     s = { "<cmd>execute ':silent w !sudo tee % > /dev/null' | :edit!<CR>", "Save with sudo permission" },
     w = { "<cmd>w!<CR>", "Save current buffer" },
   },
@@ -217,5 +230,41 @@ local mappings = {
   }
 }
 
+local colon_mappings = {
+  ["d"] = { "<cmd>lua showDate()<CR>", "Show date and time" },
+  ["z"] = { "<cmd>ZenMode<CR>", "Zen Mode" },
+
+  ["s"] = { ":SearchBoxMatchAll clear_matches=true<CR>", "Search" },
+  ["r"] = { ":SearchBoxReplace confirm=menu<CR>", "Replace" },
+
+  f = {
+    name = "Folds",
+    a = { "zM", "Close all folds" },
+    d = { "<cmd>:autocmd! Ufo TextChanged *<CR>", "Fold OnChange Disabled" },
+    n = { "<cmd>:lua require'user.toggleFoldColumn'.toggleFoldCol()<CR>", "Toggle fold column" },
+    o = { "zO", "Open all folds under cursor" },
+    r = { "zR", "Open all folds" },
+  },
+
+  t = {
+    name = "Tabline",
+    s = { "<cmd>:set showtabline=3<CR>", "Set no wrap" },
+    n = { "<cmd>:set showtabline=0<CR>", "Set wrap" },
+  },
+
+  w = {
+    name = "Wrap",
+    n = { "<cmd>:set nowrap<CR>", "Set no wrap" },
+    r = { "<cmd>:set wrap<CR>", "Set wrap" },
+  },
+}
+
+local v_colon_mappings = {
+  ["s"] = { ":SearchBoxMatchAll clear_matches=true<CR>", "Search" },
+  ["r"] = { ":SearchBoxReplace confirm=menu<CR>", "Replace" },
+}
+
 which_key.setup(setup)
 which_key.register(mappings, opts)
+which_key.register(colon_mappings, colon_opts)
+which_key.register(v_colon_mappings, v_colon_opts)

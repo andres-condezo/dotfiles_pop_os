@@ -59,59 +59,113 @@ return packer.startup(function(use)
   use { "lewis6991/impatient.nvim", commit = "969f2c5c90457612c09cf2a13fee1adaa986d350" }
   use { "lukas-reineke/indent-blankline.nvim", commit = "6177a59552e35dfb69e1493fd68194e673dc3ee2" }
   use { "goolord/alpha-nvim", commit = "ef27a59e5b4d7b1c2fe1950da3fe5b1c5f3b4c94" }
+
   use "folke/which-key.nvim"
-
-  -- use "phaazon/hop.nvim"
-
   use "petertriho/nvim-scrollbar"
-  use "farmergreg/vim-lastplace"
-
-  use "tpope/vim-surround"
-  -- use "Mephistophiles/surround.nvim"
-
-  use "kana/vim-textobj-user"
-  use "https://github.com/whatyouhide/vim-textobj-erb"
-
-  use "alvan/vim-closetag"
-
   use "mg979/vim-visual-multi"
-  use "easymotion/vim-easymotion"
+  use "farmergreg/vim-lastplace"
   use "Shatur/neovim-session-manager"
-  use "nvim-telescope/telescope-ui-select.nvim"
-  use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
 
+  use "rcarriga/nvim-notify"
+
+  use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
   use {
     "iamcco/markdown-preview.nvim",
     run = "cd app && npm install",
     ft = "markdown",
   }
+  use "phaazon/hop.nvim"
+
+  use {
+    'VonHeikemen/fine-cmdline.nvim',
+    requires = {
+      {'MunifTanjim/nui.nvim'}
+    }
+  }
+  use {
+    "folke/zen-mode.nvim",
+    config = function()
+      require("zen-mode").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
+
+  use {
+    'VonHeikemen/searchbox.nvim',
+    requires = {
+      {'MunifTanjim/nui.nvim'}
+    }
+  }
+
+  use { 'anuvyklack/hydra.nvim',
+      requires = 'anuvyklack/keymap-layer.nvim' -- needed only for pink hydras
+  }
+
+  -- use 'sunjon/shade.nvim'
+  use '0x100101/Shade.nvim'
+
+  -- MORE --
+
+  use 'psliwka/vim-smoothie'
+  use 'sindrets/winshift.nvim'
+  use 'jlanzarotta/bufexplorer'
+
+  -- Ruby / Rails
+  use "kana/vim-textobj-user"
+  use "https://github.com/whatyouhide/vim-textobj-erb"
+  use "vim-ruby/vim-ruby"
+  use "tpope/vim-rails"
+
+  -- React
+  use "tpope/vim-surround"
 
   -- Colorschemes
--- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
-use { "folke/tokyonight.nvim", commit = "8223c970677e4d88c9b6b6d81bda23daf11062bb" }
-use { "lunarvim/darkplus.nvim", commit = "2584cdeefc078351a79073322eb7f14d7fbb1835" }
--- use "lunarvim/darkplus.nvim"
+  -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
+  use { "folke/tokyonight.nvim", commit = "8223c970677e4d88c9b6b6d81bda23daf11062bb" }
+  use "LunarVim/onedarker.nvim"
+  use { "lunarvim/darkplus.nvim", commit = "2584cdeefc078351a79073322eb7f14d7fbb1835" }
+  -- use "lunarvim/darkplus.nvim"
+  use "rebelot/kanagawa.nvim"
+  use({ 'rose-pine/neovim', as = 'rose-pine', tag = 'v1.*' })
+  use "morhetz/gruvbox"
+  use "frenzyexists/aquarium-vim"
+  use "luisiacc/gruvbox-baby"
+  use "rafamadriz/neon"
+  use "tiagovla/tokyodark.nvim"
+  use "sainnhe/everforest"
+  use 'navarasu/onedark.nvim'
+  use 'shaunsingh/nord.nvim'
+  use 'marko-cerovac/material.nvim'
 
--- cmp plugins
-use { "hrsh7th/nvim-cmp", commit = "df6734aa018d6feb4d76ba6bda94b1aeac2b378a" } -- The completion plugin
-use { "hrsh7th/cmp-buffer", commit = "62fc67a2b0205136bc3e312664624ba2ab4a9323" } -- buffer completions
-use { "hrsh7th/cmp-path", commit = "466b6b8270f7ba89abd59f402c73f63c7331ff6e" } -- path completions
-use { "saadparwaiz1/cmp_luasnip", commit = "a9de941bcbda508d0a45d28ae366bb3f08db2e36" } -- snippet completions
-use { "hrsh7th/cmp-nvim-lsp", commit = "affe808a5c56b71630f17aa7c38e15c59fd648a8" }
-use { "hrsh7th/cmp-nvim-lua", commit = "d276254e7198ab7d00f117e88e223b4bd8c02d21" }
+  -- cmp plugins
+  -- use { "hrsh7th/nvim-cmp", commit = "df6734aa018d6feb4d76ba6bda94b1aeac2b378a" } -- The completion plugin
+  use { "hrsh7th/nvim-cmp" } -- The completion plugin
+  use { "hrsh7th/cmp-buffer", commit = "62fc67a2b0205136bc3e312664624ba2ab4a9323" } -- buffer completions
+  use { "hrsh7th/cmp-path", commit = "466b6b8270f7ba89abd59f402c73f63c7331ff6e" } -- path completions
+  use { "saadparwaiz1/cmp_luasnip", commit = "a9de941bcbda508d0a45d28ae366bb3f08db2e36" } -- snippet completions
+  -- use { "hrsh7th/cmp-nvim-lsp", commit = "affe808a5c56b71630f17aa7c38e15c59fd648a8" }
+  use { "hrsh7th/cmp-nvim-lsp" }
+  use { "hrsh7th/cmp-nvim-lua", commit = "d276254e7198ab7d00f117e88e223b4bd8c02d21" }
+  use "f3fora/cmp-spell"
+  use "hrsh7th/cmp-emoji"
+  use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
 
--- snippets
-use { "L3MON4D3/LuaSnip", commit = "79b2019c68a2ff5ae4d732d50746c901dd45603a" } --snippet engine
-use { "rafamadriz/friendly-snippets", commit = "d27a83a363e61009278b6598703a763ce9c8e617" } -- a bunch of snippets to use
+  -- snippets
+  use { "L3MON4D3/LuaSnip", commit = "79b2019c68a2ff5ae4d732d50746c901dd45603a" } --snippet engine
+  use { "rafamadriz/friendly-snippets", commit = "d27a83a363e61009278b6598703a763ce9c8e617" } -- a bunch of snippets to use
 
--- LSP
-use { "neovim/nvim-lspconfig", commit = "148c99bd09b44cf3605151a06869f6b4d4c24455" } -- enable LSP
-use { "williamboman/nvim-lsp-installer", commit = "e9f13d7acaa60aff91c58b923002228668c8c9e6" } -- simple to use language server installer
-use { "jose-elias-alvarez/null-ls.nvim", commit = "ff40739e5be6581899b43385997e39eecdbf9465" } -- for formatters and linters
-use { "RRethy/vim-illuminate", commit = "c82e6d04f27a41d7fdcad9be0bce5bb59fcb78e5" }
-
--- Telescope
+  -- LSP
+  use { "neovim/nvim-lspconfig", commit = "148c99bd09b44cf3605151a06869f6b4d4c24455" } -- enable LSP
+  use { "williamboman/nvim-lsp-installer", commit = "e9f13d7acaa60aff91c58b923002228668c8c9e6" } -- simple to use language server installer
+  use { "jose-elias-alvarez/null-ls.nvim", commit = "ff40739e5be6581899b43385997e39eecdbf9465" } -- for formatters and linters
+  use { "RRethy/vim-illuminate", commit = "c82e6d04f27a41d7fdcad9be0bce5bb59fcb78e5" } -- Telescope
   use { "nvim-telescope/telescope.nvim", commit = "d96eaa914aab6cfc4adccb34af421bdd496468b0" }
+  use "nvim-telescope/telescope-ui-select.nvim"
+  use "tom-anders/telescope-vim-bookmarks.nvim"
+  use "nvim-telescope/telescope-media-files.nvim"
 
   -- Treesitter
   use {
@@ -119,6 +173,7 @@ use { "RRethy/vim-illuminate", commit = "c82e6d04f27a41d7fdcad9be0bce5bb59fcb78e
     commit = "518e27589c0463af15463c9d675c65e464efc2fe",
   }
   use { "p00f/nvim-ts-rainbow" }
+  use "windwp/nvim-ts-autotag"
 
   -- Git
   use { "lewis6991/gitsigns.nvim", commit = "c18e016864c92ecf9775abea1baaa161c28082c3" }

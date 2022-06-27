@@ -1,14 +1,34 @@
--- GENERAL
-require "user.options"
-require "user.wichkey"
-require "user.keymaps"
-require "user.plugins"
+-- Dependencies --
+require "user.notify"
+require "user.neogit"
+-- require "user.shade"
+
+-- Themes
+require "user.kanagawa"
+require "user.aquarium"
+require "user.grubox-baby"
+require "user.neon"
+require "user.tokyodark"
+require "user.everforest"
+require "user.onedark"
+require "user.nord"
+require "user.material"
 require "user.colorscheme"
 
--- PLUGINS
+-- General
+require "user.options"
+require "user.autocommands"
+require "user.wichkey"
+require "user.keymaps"
+require "user.clr-cmd"
+require "user.hydra-windows"
+require "user.hydra-git"
+require "user.plugins"
 
+-- Plugins
 require "user.alpha"
 require "user.lualine"
+require "user.lualine-t"
 require "user.bufferline"
 require "user.scrollbar"
 require "user.nvim-tree"
@@ -23,12 +43,12 @@ require "user.project"
 require "user.telescope"
 require "user.toggleterm"
 require "user.impatient"
-require "user.autocommands"
 require "user.illuminate"
 require "user.dap"
 require "user.session-manager"
 require "user.ufo"
-require "user.vim-closetag"
+require "user.custom-fold"
+require "user.toggleFoldColumn"
+require "user.hop"
+require "user.zen-mode"
 
--- require "user.hop"
--- require "user.surround"

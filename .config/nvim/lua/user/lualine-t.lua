@@ -8,9 +8,9 @@ if not status_theme_ok then
   return
 end
 
-vim.api.nvim_set_hl(0, "SLGitIcon", { fg = "#E8AB53", bg = "#303030" })
-vim.api.nvim_set_hl(0, "SLBranchName", { fg = "#D4D4D4", bg = "#303030", bold = false })
--- vim.api.nvim_set_hl(0, "SLProgress", { fg = "#D4D4D4", bg = "#303030" })
+vim.api.nvim_set_hl(0, "SLGitIcon", { fg = "#E8AB53", bg = "none" })
+vim.api.nvim_set_hl(0, "SLBranchName", { fg = "#D4D4D4", bg = "none", bold = false })
+vim.api.nvim_set_hl(0, "SLProgress", { fg = "white", bg = "none" })
 vim.api.nvim_set_hl(0, "SLSeparator", { fg = "#808080", bg = "none" })
 local mode_color = {
   n = "#252525",
@@ -57,21 +57,27 @@ local icons = require "user.icons"
 
 local diagnostics = {
   "diagnostics",
+  color = function()
+    return { fg = "white", bg = "none" }
+  end,
   sources = { "nvim_diagnostic" },
   sections = { "error", "warn" },
   symbols = { error = icons.diagnostics.Error .. " ", warn = icons.diagnostics.Warning .. " " },
-  colored = true,
+  colored = false,
   update_in_insert = false,
   always_visible = true,
-  separator = "%#SLSeparator#" .. " │ " .. "%*",
+  separator = "%#SLSeparator#" .. "│ " .. "%*",
 }
 
 local diff = {
   "diff",
-  colored = true,
+  color = function()
+    return { fg = "white", bg = "none" }
+  end,
+  colored = false,
   symbols = { added = icons.git.Add .. " ", modified = icons.git.Mod .. " ", removed = icons.git.Remove .. " " }, -- changes diff symbols
   cond = hide_in_width,
-  separator = "%#SLSeparator#" .. " │ " .. "%*",
+  separator = "%#SLSeparator#" .. "│ " .. "%*",
 }
 
 -- local mode = {
@@ -83,19 +89,25 @@ local diff = {
 
 local filetype = {
   "filetype",
+  color = function()
+    return { fg = "white", bg = "none" }
+  end,
   icons_enabled = true,
-  colored = true,
+  colored = false,
   -- icon = nil,
-  separator = "%#SLSeparator#" .. " │ " .. "%*",
+  separator = "%#SLSeparator#" .. "│ " .. "%*",
 }
 
 local branch = {
+  color = function()
+    return { fg = "white", bg = "none" }
+  end,
   "branch",
   icons_enabled = true,
   icon = "%#SLGitIcon#" .. "" .. "%*" .. "%#SLBranchName#",
   -- color = "Constant",
   colored = true,
-  separator = "%#SLSeparator#" .. " │ " .. "%*",
+  separator = "%#SLSeparator#" .. "│ " .. "%*",
 }
 
 -- local current_signature = function()
@@ -107,29 +119,56 @@ local branch = {
 --   return "%#SLSeparator#" .. sig.hint .. "%*"
 -- end
 
--- cool function for progress
--- local progress = function()
---   local current_line = vim.fn.line "."
---   local total_lines = vim.fn.line "$"
---   local chars = { "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
---   local line_ratio = current_line / total_lines
---   local index = math.ceil(line_ratio * #chars)
---   -- return chars[index]
---   return "%#SLProgress#" .. chars[index] .. "%*"
--- end
-
 local spaces = {
+  color = function()
+    return { fg = "white", bg = "none" }
+  end,
   function()
     return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
   end,
   padding = 0,
-  separator = "%#SLSeparator#" .. " │ " .. "%*",
+  separator = "%#SLSeparator#" .. " │" .. "%*",
 }
 
 local location = {
   "location",
   color = function()
-    return { fg = "white", bg = "#252525" }
+    return { fg = "white", bg = "none" }
+  end,
+}
+
+local progress = {
+  "progress",
+  color = function()
+    return { fg = "white", bg = "none" }
+  end,
+}
+
+local fileformat = {
+  "fileformat",
+  color = function()
+    return { fg = "white", bg = "none" }
+  end,
+}
+
+local encoding = {
+  "encoding",
+  color = function()
+    return { fg = "white", bg = "none" }
+  end,
+}
+
+-- local buffers = {
+--   "buffers",
+--   color = function()
+--     return { fg = "white", bg = "none" }
+--   end,
+-- }
+
+local filename = {
+  "filename",
+  color = function()
+    return { fg = "white", bg = "none" }
   end,
 }
 
@@ -148,6 +187,22 @@ local nvim_tree_shift = {
   end,
 }
 
+local middle_shift = {
+  function()
+    local len =vim.api.nvim_win_get_width(0)-1
+    local title = " "
+    local left = (len - #title) / 2
+    local right = len - left - #title
+    Plus_width = 800
+
+    -- return string.rep(' ', left) .. title .. string.rep(' ', right)
+    return title .. string.rep(' ', (right + Plus_width))
+  end,
+  color = function()
+    return { fg = "white", bg = "none" }
+  end,
+}
+
 lualine.setup {
   options = {
     globalstatus = true,
@@ -156,16 +211,15 @@ lualine.setup {
     theme = theme,
     component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
-    disabled_filetypes = { "alpha", "dashboard" },
+    disabled_filetypes = { "alpha", "dashboard"},
     always_divide_middle = true,
   },
   sections = {
     lualine_a = { nvim_tree_shift, mode, branch },
-    lualine_b = { diagnostics },
-    lualine_c = {},
-    -- lualine_x = { diff, spaces, "encoding", filetype },
-    lualine_x = { diff, spaces, filetype, "fileformat", "encoding" },
-    lualine_y = { "progress" },
+    lualine_b = { diagnostics, filename },
+    lualine_c = { middle_shift },
+    lualine_x = { diff, spaces, filetype, fileformat, encoding },
+    lualine_y = { progress },
     lualine_z = { location },
   },
   inactive_sections = {
