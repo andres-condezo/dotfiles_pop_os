@@ -38,15 +38,14 @@ Hydra({
       { '-', '<C-w>-' },
       { '>', '2<C-w>>' },
       { '<', '2<C-w><' },
-      { 'e', '<C-w>=', { desc = 'equalize'} },
+      { 'e', '<C-w>=', { desc = 'resize'} },
       -- Scroll
       { '<A-h>', '7zh' },
       { '<A-l>', '7zl' },
       { '<A-k>', '7<C-y>' },
-      { '<A-j>', '7<C-e>' },
-      --
-      { 'b', '<Cmd>BufExplorer<CR>', { exit = true, desc = 'choose buffer' } },
+      { '<A-j>', '7<C-e>', { desc = 'scroll'} },
+      -- Exit
+      { 'q', nil,  { exit = true }, { desc = 'exit' } },
       { '<Esc>', nil,  { exit = true }},
-      { 'q', nil,  { exit = true }},
    }
 })

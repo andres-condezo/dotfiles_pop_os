@@ -78,18 +78,27 @@ local opts = {
   nowait = true, -- use `nowait` when creating keymaps
 }
 
-local colon_opts = {
-  mode = "n", -- NORMAL mode
-  prefix = ",",
+local v_opts = {
+  mode = "x", -- VISUAL mode
+  prefix = "<leader>",
   buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
   silent = true, -- use `silent` when creating keymaps
   noremap = true, -- use `noremap` when creating keymaps
   nowait = true, -- use `nowait` when creating keymaps
 }
 
-local v_colon_opts = {
-  mode = "x", -- NORMAL mode
-  prefix = ",",
+local more_opts = {
+  mode = "n", -- NORMAL mode
+  prefix = "m",
+  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true, -- use `silent` when creating keymaps
+  noremap = true, -- use `noremap` when creating keymaps
+  nowait = true, -- use `nowait` when creating keymaps
+}
+
+local more_v_opts = {
+  mode = "x", -- VISUAL mode
+  prefix = "m",
   buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
   silent = true, -- use `silent` when creating keymaps
   noremap = true, -- use `noremap` when creating keymaps
@@ -109,7 +118,7 @@ local mappings = {
     "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
     "Find files" },
   ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
-  ["o"] = { "<cmd>BufCurOnly<cr>", "Current Only" },
+  ["o"] = { "<cmd>BufCurOnly<cr>", "Close all buffers except Current one" },
   ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
   ["q"] = { "<cmd>q!<CR>", "Quit" },
   ["Q"] = { "<cmd>qa!<CR>", "Close all windows" },
@@ -224,32 +233,45 @@ local mappings = {
     w = { "<cmd>w!<CR>", "Save current buffer" },
   },
 
-  z = {
-    c = { "<cmd>:loadview<CR>", "Load folds"},
-    z = { "<cmd>zfa", "Fold all ..."}
-  }
+  x = {
+    name = "Run code",
+    a = { "<cmd>wa | :qa<CR>", "Save all buffer and exit" },
+    c = { "<Plug>SnipClose", "Close SnipRun"},
+    d = { "<cmd>FineCmdline<CR>Codi ", "Codi run code"},
+    p = { "<cmd>Jaq<CR>G", "Jaq run code"},
+    x = { "<Plug>SnipRun", "SnipRun run code"},
+    z = { "<Plug>SnipReset", "Reset SnipRun"},
+  },
 }
 
-local colon_mappings = {
+local more_mappings = {
   ["d"] = { "<cmd>lua showDate()<CR>", "Show date and time" },
-  ["z"] = { "<cmd>ZenMode<CR>", "Zen Mode" },
-
-  ["s"] = { ":SearchBoxMatchAll clear_matches=true<CR>", "Search" },
+  ["n"] = { "<cmd>Telescope notify<CR>", "Show notifications" },
   ["r"] = { ":SearchBoxReplace confirm=menu<CR>", "Replace" },
+  ["s"] = { ":SearchBoxMatchAll clear_matches=true<CR>", "Search" },
 
   f = {
     name = "Folds",
-    a = { "zM", "Close all folds" },
-    d = { "<cmd>:autocmd! Ufo TextChanged *<CR>", "Fold OnChange Disabled" },
+    a = { "zfa", "Fold all ..."},
+    c = { "zM | zo | zz", "Fold all except current one"},
+    d = { "<cmd>:autocmd! Ufo TextChanged * | :autocmd! Ufo InsertLeave *<CR>", "Fold OnChange Disabled" },
+    f = { "zM", "Close all folds" },
+    l = { "<cmd>:loadview<CR>", "Load folds"},
     n = { "<cmd>:lua require'user.toggleFoldColumn'.toggleFoldCol()<CR>", "Toggle fold column" },
     o = { "zO", "Open all folds under cursor" },
-    r = { "zR", "Open all folds" },
+    r = { "zR | zz", "Open all folds" },
   },
+
+  -- m = {
+  --   name = "Tabline",
+  --   s = { "<cmd>:set showtabline=3<CR>", "Show tabline" },
+  --   n = { "<cmd>:set showtabline=0<CR>", "Hide tabine" },
+  -- },
 
   t = {
     name = "Tabline",
-    s = { "<cmd>:set showtabline=3<CR>", "Set no wrap" },
-    n = { "<cmd>:set showtabline=0<CR>", "Set wrap" },
+    s = { "<cmd>:set showtabline=3<CR>", "Show tabline" },
+    n = { "<cmd>:set showtabline=0<CR>", "Hide tabine" },
   },
 
   w = {
@@ -257,14 +279,33 @@ local colon_mappings = {
     n = { "<cmd>:set nowrap<CR>", "Set no wrap" },
     r = { "<cmd>:set wrap<CR>", "Set wrap" },
   },
+
+  z = {
+    name = "Zen",
+    a = { "<cmd>:TZAtaraxis<CR>", "Ataraxis mode" },
+    f = { "<cmd>:TZFocus<CR>", "Focus mode" },
+    m = { "<cmd>:TZMinimalist<CR>", "Minimalist mode" },
+    t = { "<cmd>:Twilight<CR>", "Twilight mode" },
+    z = { "<cmd>ZenMode<CR>", "Zen mode" },
+  },
+
 }
 
-local v_colon_mappings = {
+local v_mappings = {
+  x = {
+    x = { "<Plug>SnipRun", "Run code"},
+    c = { "<Plug>SnipClose", "Close SnipRun"},
+    z = { "<Plug>SnipReset", "Reset SnipRun"},
+  },
+}
+
+local more_v_mappings = {
   ["s"] = { ":SearchBoxMatchAll clear_matches=true<CR>", "Search" },
-  ["r"] = { ":SearchBoxReplace confirm=menu<CR>", "Replace" },
+  ["r"] = { "<cmd>SearchBoxReplace confirm=menu visual_mode=true<CR>", "Replace" },
 }
 
 which_key.setup(setup)
 which_key.register(mappings, opts)
-which_key.register(colon_mappings, colon_opts)
-which_key.register(v_colon_mappings, v_colon_opts)
+which_key.register(v_mappings, v_opts)
+which_key.register(more_mappings, more_opts)
+which_key.register(more_v_mappings, more_v_opts)

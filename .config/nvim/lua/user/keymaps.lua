@@ -74,4 +74,4 @@ keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
 keymap("n", "<A-r>", ":Reload<CR>", opts)
 
 -- comand line
-keymap('n', '<CR>', '<cmd>FineCmdline<CR>', opts)
+keymap('n', ',', '<cmd>FineCmdline<CR>', opts)

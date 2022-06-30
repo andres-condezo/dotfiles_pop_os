@@ -42,7 +42,6 @@ end
 vim.opt.shortmess:append "c"
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]
-
 -- vim.opt.spell = true
 -- vim.opt.spelllang = { 'en_us' }
 -- vim.opt.fillchars = "vert: ,eob:a"

@@ -69,11 +69,7 @@ return packer.startup(function(use)
   use "rcarriga/nvim-notify"
 
   use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
-  use {
-    "iamcco/markdown-preview.nvim",
-    run = "cd app && npm install",
-    ft = "markdown",
-  }
+
   use "phaazon/hop.nvim"
 
   use {
@@ -82,16 +78,8 @@ return packer.startup(function(use)
       {'MunifTanjim/nui.nvim'}
     }
   }
-  use {
-    "folke/zen-mode.nvim",
-    config = function()
-      require("zen-mode").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      }
-    end
-  }
+
+  use { "folke/zen-mode.nvim" }
 
   use {
     'VonHeikemen/searchbox.nvim',
@@ -106,6 +94,56 @@ return packer.startup(function(use)
 
   -- use 'sunjon/shade.nvim'
   use '0x100101/Shade.nvim'
+
+  use {
+      'glacambre/firenvim',
+      run = function() vim.fn['firenvim#install'](0) end
+  }
+
+
+  use "tjdevries/colorbuddy.nvim"
+  use "onsails/lspkind.nvim"
+  use "Pocco81/TrueZen.nvim"
+  use { "folke/twilight.nvim" }
+
+  -- Code runner --
+  use "metakirby5/codi.vim"
+  use { 'michaelb/sniprun', run = 'bash ./install.sh'}
+  use "is0n/jaq-nvim"
+
+  -- Markdown --
+  use {
+    "iamcco/markdown-preview.nvim",
+    run = function()
+      vim.fn["mkdp#util#install"]()
+    end,
+    setup = function()
+      vim.g.mkdp_browser = "surf"
+      vim.g.mkdp_open_to_the_world = 1
+      vim.g.mkdp_port = "57843"
+    end,
+    ft = {
+      "markdown",
+    },
+  }
+
+  use {
+    "mzlogin/vim-markdown-toc",
+    cmd = {
+      "GenTocGFM",
+    },
+  }
+
+  use 'godlygeek/tabular'
+
+  use {
+    'preservim/vim-markdown',
+    ft = {
+      "markdown",
+    },
+  }
+
+  use { 'dhruvasagar/vim-table-mode' }
 
   -- MORE --
 
@@ -124,7 +162,8 @@ return packer.startup(function(use)
 
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
-  use { "folke/tokyonight.nvim", commit = "8223c970677e4d88c9b6b6d81bda23daf11062bb" }
+  -- use { "folke/tokyonight.nvim", commit = "8223c970677e4d88c9b6b6d81bda23daf11062bb" }
+  use { "folke/tokyonight.nvim" }
   use "LunarVim/onedarker.nvim"
   use { "lunarvim/darkplus.nvim", commit = "2584cdeefc078351a79073322eb7f14d7fbb1835" }
   -- use "lunarvim/darkplus.nvim"
@@ -139,28 +178,48 @@ return packer.startup(function(use)
   use 'navarasu/onedark.nvim'
   use 'shaunsingh/nord.nvim'
   use 'marko-cerovac/material.nvim'
+  use "tomasiser/vim-code-dark"
+  use "olimorris/onedarkpro.nvim"
+  use "rmehri01/onenord.nvim"
+
 
   -- cmp plugins
-  -- use { "hrsh7th/nvim-cmp", commit = "df6734aa018d6feb4d76ba6bda94b1aeac2b378a" } -- The completion plugin
-  use { "hrsh7th/nvim-cmp" } -- The completion plugin
+  use { "hrsh7th/nvim-cmp", commit = "df6734aa018d6feb4d76ba6bda94b1aeac2b378a" } -- The completion plugin
+  -- use { "hrsh7th/nvim-cmp" } -- The completion plugin
   use { "hrsh7th/cmp-buffer", commit = "62fc67a2b0205136bc3e312664624ba2ab4a9323" } -- buffer completions
   use { "hrsh7th/cmp-path", commit = "466b6b8270f7ba89abd59f402c73f63c7331ff6e" } -- path completions
   use { "saadparwaiz1/cmp_luasnip", commit = "a9de941bcbda508d0a45d28ae366bb3f08db2e36" } -- snippet completions
-  -- use { "hrsh7th/cmp-nvim-lsp", commit = "affe808a5c56b71630f17aa7c38e15c59fd648a8" }
-  use { "hrsh7th/cmp-nvim-lsp" }
+  use { "hrsh7th/cmp-nvim-lsp", commit = "affe808a5c56b71630f17aa7c38e15c59fd648a8" }
+  -- use { "hrsh7th/cmp-nvim-lsp" }
   use { "hrsh7th/cmp-nvim-lua", commit = "d276254e7198ab7d00f117e88e223b4bd8c02d21" }
   use "f3fora/cmp-spell"
   use "hrsh7th/cmp-emoji"
   use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
+  use "notomo/cmp-neosnippet"
+  use { 'hrsh7th/cmp-cmdline' }
 
   -- snippets
   use { "L3MON4D3/LuaSnip", commit = "79b2019c68a2ff5ae4d732d50746c901dd45603a" } --snippet engine
   use { "rafamadriz/friendly-snippets", commit = "d27a83a363e61009278b6598703a763ce9c8e617" } -- a bunch of snippets to use
 
+  -- For vsnip users.
+  use 'hrsh7th/cmp-vsnip'
+  use 'hrsh7th/vim-vsnip'
+
+  -- For ultisnips users.
+  use 'SirVer/ultisnips'
+  use 'quangnguyen30192/cmp-nvim-ultisnips'
+  use 'honza/vim-snippets'
+
+  -- For snippy users.
+  use 'dcampos/nvim-snippy'
+  use 'dcampos/cmp-snippy'
+
   -- LSP
   use { "neovim/nvim-lspconfig", commit = "148c99bd09b44cf3605151a06869f6b4d4c24455" } -- enable LSP
   use { "williamboman/nvim-lsp-installer", commit = "e9f13d7acaa60aff91c58b923002228668c8c9e6" } -- simple to use language server installer
   use { "jose-elias-alvarez/null-ls.nvim", commit = "ff40739e5be6581899b43385997e39eecdbf9465" } -- for formatters and linters
+
   use { "RRethy/vim-illuminate", commit = "c82e6d04f27a41d7fdcad9be0bce5bb59fcb78e5" } -- Telescope
   use { "nvim-telescope/telescope.nvim", commit = "d96eaa914aab6cfc4adccb34af421bdd496468b0" }
   use "nvim-telescope/telescope-ui-select.nvim"
@@ -168,10 +227,11 @@ return packer.startup(function(use)
   use "nvim-telescope/telescope-media-files.nvim"
 
   -- Treesitter
-  use {
-    "nvim-treesitter/nvim-treesitter",
-    commit = "518e27589c0463af15463c9d675c65e464efc2fe",
-  }
+  -- use {
+  --   "nvim-treesitter/nvim-treesitter",
+  --   commit = "518e27589c0463af15463c9d675c65e464efc2fe",
+  -- }
+  use { "nvim-treesitter/nvim-treesitter" }
   use { "p00f/nvim-ts-rainbow" }
   use "windwp/nvim-ts-autotag"
 
@@ -183,6 +243,8 @@ return packer.startup(function(use)
   use { "mfussenegger/nvim-dap", commit = "014ebd53612cfd42ac8c131e6cec7c194572f21d" }
   use { "rcarriga/nvim-dap-ui", commit = "d76d6594374fb54abf2d94d6a320f3fd6e9bb2f7" }
   use { "ravenxrz/DAPInstall.nvim", commit = "8798b4c36d33723e7bba6ed6e2c202f84bb300de" }
+
+  use 'sheerun/vim-polyglot'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

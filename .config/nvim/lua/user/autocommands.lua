@@ -76,7 +76,7 @@ vim.cmd "command! BufCurOnly execute '%bdelete|edit#|bdelete#'"
 -- Call reload to apply the latest init.lua contents
 _G.reloadSources = function ()
   vim.cmd('so %')
-  vim.notify("Resources reloaded", "info", { title = "Info"})
+  vim.notify("Configuration reloaded", "info", { title = "NVim"})
 end
 vim.cmd "command! Reload execute 'lua reloadSources()'"
 
@@ -93,6 +93,3 @@ _G.showDate = function ()
 end
 
 -- vim.cmd "autocmd BufWinLeave *.* mkview"
-
--- vim.cmd "autocmd! Ufo TextChanged *"
-

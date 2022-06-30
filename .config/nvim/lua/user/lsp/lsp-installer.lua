@@ -8,9 +8,7 @@ local servers = {
   "cssmodules_ls",
   "emmet_ls",
   "html",
-  -- "jdtls",
   "jsonls",
-  "solc",
   "sumneko_lua",
   "tflint",
   "tsserver",
@@ -87,5 +85,3 @@ for _, server in pairs(servers) do
 end
 
 -- TODO: add something to installer later
--- require("lspconfig").motoko.setup {}
-
