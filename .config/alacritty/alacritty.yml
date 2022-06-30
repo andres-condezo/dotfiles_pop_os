@@ -106,10 +106,11 @@ font:
     #   - (macOS) Menlo
     #   - (Linux) monospace
     #   - (Windows) Consolas
-    #family: Curie
-    #family: Source Code Pro
-     family: UbuntuMono
-     # family: Droid
+      family: JetBrainsMonoMedium Nerd Font Mono
+    # family: Source Code Pro
+     # family: UbuntuMono
+     # family: DroidSansMono Nerd Font 
+     # family: Hurmit Nerd Font Mono
     # The `style` can be specified to pick a specific face.
     #style: Retina
 
@@ -245,7 +246,7 @@ bell:
 # The value `0.0` is completely transparent and `1.0` is opaque.
 # background_opacity: 0.99
 window:
-  opacity: 0.9
+  opacity: 1.0 
 
 # Mouse bindings
 #

@@ -93,7 +93,7 @@ alias webdev="cd /run/media/adrs/'Nuevo vol'/webDevelopment"
 alias pz="cd ~/Documents/platzi"
 alias lv="nvim -c':e#<1'"
 alias v="nvim"
-alias vrc="nvim ~/.config/nvim/init.vim"
+alias vrc="nvim ~/.config/nvim/init.lua"
 alias zrc="nvim ~/.zshrc"
 alias brc="nvim ~/.bashrc"
 alias x=exit
@@ -210,3 +210,23 @@ export FZF_DEFAULT_COMMAND='alias ag=ag . --path-to-ignore ~/.ignore'
 
 xsetwacom set "Wacom Intuos S 2 Pen stylus" Button 2 "pan"
 xsetwacom --set "Wacom Intuos S 2 Pen stylus" "PanScrollThreshold" 200
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Codi
+# Usage: codi [filetype] [filename]
+codi() {
+  local syntax="${1:-python}"
+  shift
+  nvim -c \
+    "let g:startify_disable_at_vimenter = 1 |\
+    set bt=nofile ls=0 noru nonu nornu |\
+    hi ColorColumn ctermbg=NONE |\
+    hi VertSplit ctermbg=NONE |\
+    hi NonText ctermfg=0 |\
+    Codi $syntax" "$@"
+}
+
+export PATH=$PATH:/home/adrsp/.cargo/bin
