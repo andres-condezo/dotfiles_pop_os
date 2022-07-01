@@ -341,6 +341,11 @@ _G.packer_plugins = {
     path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
+  ["nvim-neoclip.lua"] = {
+    loaded = true,
+    path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/nvim-neoclip.lua",
+    url = "https://github.com/AckslD/nvim-neoclip.lua"
+  },
   ["nvim-notify"] = {
     loaded = true,
     path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/nvim-notify",
@@ -446,6 +451,14 @@ _G.packer_plugins = {
     path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/sniprun",
     url = "https://github.com/michaelb/sniprun"
   },
+  ["splitjoin.vim"] = {
+    keys = { { "n", "gJ" }, { "n", "gS" } },
+    loaded = false,
+    needs_bufread = true,
+    only_cond = false,
+    path = "/home/adrsp/.local/share/nvim/site/pack/packer/opt/splitjoin.vim",
+    url = "https://github.com/AndrewRadev/splitjoin.vim"
+  },
   tabular = {
     loaded = true,
     path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/tabular",
@@ -536,6 +549,11 @@ _G.packer_plugins = {
     path = "/home/adrsp/.local/share/nvim/site/pack/packer/opt/vim-markdown-toc",
     url = "https://github.com/mzlogin/vim-markdown-toc"
   },
+  ["vim-matchup"] = {
+    loaded = true,
+    path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/vim-matchup",
+    url = "https://github.com/andymass/vim-matchup"
+  },
   ["vim-polyglot"] = {
     loaded = true,
     path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/vim-polyglot",
@@ -618,6 +636,12 @@ time([[Setup for markdown-preview.nvim]], false)
 time([[Defining lazy-load commands]], true)
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file GenTocGFM lua require("packer.load")({'vim-markdown-toc'}, { cmd = "GenTocGFM", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 time([[Defining lazy-load commands]], false)
+
+-- Keymap lazy-loads
+time([[Defining lazy-load keymaps]], true)
+vim.cmd [[nnoremap <silent> gS <cmd>lua require("packer.load")({'splitjoin.vim'}, { keys = "gS", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[nnoremap <silent> gJ <cmd>lua require("packer.load")({'splitjoin.vim'}, { keys = "gJ", prefix = "" }, _G.packer_plugins)<cr>]]
+time([[Defining lazy-load keymaps]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]

@@ -150,6 +150,21 @@ return packer.startup(function(use)
   use 'psliwka/vim-smoothie'
   use 'sindrets/winshift.nvim'
   use 'jlanzarotta/bufexplorer'
+  use {
+    "AndrewRadev/splitjoin.vim",
+    keys = {
+      { "n", "gJ" },
+      { "n", "gS" },
+    },
+  }
+  use { 'andymass/vim-matchup' }
+
+  use {
+    "AckslD/nvim-neoclip.lua",
+    requires = {
+      {'nvim-telescope/telescope.nvim'},
+    }
+  }
 
   -- Ruby / Rails
   use "kana/vim-textobj-user"

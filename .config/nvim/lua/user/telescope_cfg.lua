@@ -36,8 +36,8 @@ telescope.setup {
 
         ["<A-d>"] = require("telescope.actions").delete_buffer,
 
-        -- ["<C-u>"] = actions.preview_scrolling_up,
-        -- ["<C-d>"] = actions.preview_scrolling_down,
+        ["<C-u>"] = actions.preview_scrolling_up,
+        ["<C-d>"] = actions.preview_scrolling_down,
 
         ["<PageUp>"] = actions.results_scrolling_up,
         ["<PageDown>"] = actions.results_scrolling_down,
@@ -58,6 +58,9 @@ telescope.setup {
         ["<C-x>"] = actions.select_horizontal,
         ["<C-v>"] = actions.select_vertical,
         ["<C-t>"] = actions.select_tab,
+
+        ["<C-u>"] = actions.preview_scrolling_up,
+        ["<C-d>"] = actions.preview_scrolling_down,
 
         ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
         ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
@@ -109,5 +112,3 @@ telescope.setup {
 }
 
 require("telescope").load_extension("ui-select")
-require("telescope").load_extension("notify")
--- require('telescope').extensions.notify.notify()

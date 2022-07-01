@@ -235,7 +235,6 @@ local mappings = {
 
   x = {
     name = "Run code",
-    a = { "<cmd>wa | :qa<CR>", "Save all buffer and exit" },
     c = { "<Plug>SnipClose", "Close SnipRun"},
     d = { "<cmd>FineCmdline<CR>Codi ", "Codi run code"},
     p = { "<cmd>Jaq<CR>G", "Jaq run code"},
@@ -245,7 +244,8 @@ local mappings = {
 }
 
 local more_mappings = {
-  ["d"] = { "<cmd>lua showDate()<CR>", "Show date and time" },
+  ["c"] = { "<cmd>:Telescope neoclip<CR>jk", "Neo clip" },
+  ["d"] = { "<cmd>lua showDate()<CR>jk", "Show date and time" },
   ["n"] = { "<cmd>Telescope notify<CR>", "Show notifications" },
   ["r"] = { ":SearchBoxReplace confirm=menu<CR>", "Replace" },
   ["s"] = { ":SearchBoxMatchAll clear_matches=true<CR>", "Search" },
@@ -261,12 +261,6 @@ local more_mappings = {
     o = { "zO", "Open all folds under cursor" },
     r = { "zR | zz", "Open all folds" },
   },
-
-  -- m = {
-  --   name = "Tabline",
-  --   s = { "<cmd>:set showtabline=3<CR>", "Show tabline" },
-  --   n = { "<cmd>:set showtabline=0<CR>", "Hide tabine" },
-  -- },
 
   t = {
     name = "Tabline",
@@ -293,6 +287,7 @@ local more_mappings = {
 
 local v_mappings = {
   x = {
+    name = "Run code",
     x = { "<Plug>SnipRun", "Run code"},
     c = { "<Plug>SnipClose", "Close SnipRun"},
     z = { "<Plug>SnipReset", "Reset SnipRun"},
