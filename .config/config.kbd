@@ -26,11 +26,12 @@
 )
 
 (defalias
-  ;;num (tap-next-release 1 num_layer)
   num (tap-hold-next-release 300 a (layer-toggle num_layer))
-  nav (tap-hold-next-release 300 spc (layer-toggle nav_layer))
-  win (tap-hold-next-release 300 w (layer-toggle win_layer))
-  rsf (tap-hold-next-release 300 j rsft)
+  nu2 (tap-hold-next-release 300 w (layer-toggle sym2_layer))
+  fun (tap-hold-next-release 300 g (layer-toggle fun_layer))
+  nav (tap-hold-next-release 250 spc (layer-toggle nav_layer))
+  tb (tap-hold-next-release 300 t tab)
+  rsf (tap-hold-next-release 300 n rsft)
   rct (tap-hold-next-release 300 m rctl)
   ral (tap-hold-next-release 300 esc ralt)
   lsf (tap-hold-next-release 300 f lsft)
@@ -40,15 +41,27 @@
   qwe (layer-switch qwerty_layer)
   ini (layer-switch init_layer)
   tls #(C-b l)
+  wtb #(A-tab)
+  chw #(M-S)
+  wsp (around lctl lmet)
 )
 
 (deflayer init_layer
   caps f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home @qwe        nlck kp/  kp*  kp-
-  tab  q    @win e    r    t    y    u    i    o    p    [    ]    ret   del  end  pgdn        kp7  kp8  kp9  kp+
-  esc  @num s    d    @lsf g    h    @rsf k    l    @sym '    \                                kp4  kp5  kp6
-  lsft 102d z    x    @lct @lal b    n    @rct ,    .    /    rsft            up               kp1  kp2  kp3  kprt
+  tab  q    @nu2 e    r    @tb  y    u    i    o    p    [    ]    ret   del  end  pgdn        kp7  kp8  kp9  kp+
+  esc  @num s    d    @lsf @fun h    j    k    l    @sym '    \                                kp4  kp5  kp6
+  lsft 102d z    x    @lct @lal b    @rsf @rct ,    .    /    rsft            up               kp1  kp2  kp3  kprt
   lctl lmet lalt           @nav                @ral rmet cmp  rctl       left down rght        kp0  kp.
+)
+
+(deflayer qwerty_layer
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup        nlck kp/  kp*  kp-
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    ret   del  end  @ini        kp7  kp8  kp9  kp+
+  caps a    s    d    f    g    h    j    k    l    ;    '    \                                kp4  kp5  kp6
+  lsft 102d z    x    c    v    b    n    m    ,    .    /    rsft            up               kp1  kp2  kp3  kprt
+  lctl lmet lalt           spc                 ralt rmet cmp  rctl       left down rght        kp0       kp.
 )
 
 (deflayer num_layer
@@ -63,35 +76,37 @@
 (deflayer nav_layer
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup        nlck kp/  kp*  kp-
-  tab  q    w    e    r    tab  y    u    i    o    p    [    ]    ret   del  end  pgdn        kp7  kp8  kp9  kp+
-  caps a    del  bspc f    g    left down up   rght ;    '    \                                kp4  kp5  kp6
-  lsft 102d z    x    c    v    b    n    m    ,    .    /    rsft            up               kp1  kp2  kp3  kprt
+  tab  q    lmet @chw @wsp tab  y    u    ret  esc  p    RA-8 RA-9 ret   del  end  pgdn        kp7  kp8  kp9  kp+
+  caps a    del  bspc @lsf g    left down up   rght ;    RA-' RA-0                             kp4  kp5  kp6
+  lsft 102d z    x    @lct @wtb caps @lal @rct ,    .    /    rsft            up               kp1  kp2  kp3  kprt
   lctl lmet lalt           spc                 ralt rmet cmp  rctl       left down rght        kp0  kp.
 )
 
+(deflayer fun_layer
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup        nlck kp/  kp*  kp-
+  tab  q    w    e    r    t    y    f7   f8   f9   f12  [    ]    ret   del  end  pgdn        kp7  kp8  kp9  kp+
+  caps a    s    d    f    g    h    f4   f5   f6   f11  '    \                                kp4  kp5  kp6
+  lsft 102d z    x    c    v    b    n    f1   f2   f3    f10  rsft            up              kp1  kp2  kp3  kprt
+  lctl lmet lalt           spc                 ralt rmet cmp  rctl       left down rght        kp0       kp.
+)
+
+;; {} [] () < > , ; . : - _ / \ | &
 (deflayer sym_layer
-  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup        nlck kp/  kp*  kp-
-  tab  q    @    e    r    t    y    u    i    o    p    [    ]    ret   del  end  pgdn        kp7  kp8  kp9  kp+
-  caps a    s    d    f    g    h    j    k    l    ;    '    \                                kp4  kp5  kp6
-  lsft 102d z    x    c    v    b    n    m    ,    .    /    rsft            up               kp1  kp2  kp3  kprt
-  lctl lmet lalt           spc                 ralt rmet cmp  rctl       left down rght        kp0       kp.
+  esc  f1   f2   f3   f4     f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
+  grv  1    2    3    4      5    6    7    8    9    0    -    =    bspc  ins  home pgup        nlck kp/  kp*  kp-
+  tab  102d S-8  S-9  S-102d t    y    u    i    o    p    [    ]    ret   del  end  pgdn        kp7  kp8  kp9  kp+
+  caps RA-8 RA-7 RA-0 RA-9   g    h    /    S-/  l    ;    '    \                                kp4  kp5  kp6
+  lsft 102d z    x    c      S-.  b    n    m    ,    .    /    rsft            up               kp1  kp2  kp3  kprt
+  lctl lmet lalt             spc                 ralt rmet cmp  rctl       left down rght        kp0       kp.
 )
-
-(deflayer qwerty_layer
-  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup        nlck kp/  kp*  kp-
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    ret   del  end  @ini       kp7  kp8  kp9  kp+
-  caps a    s    d    f    g    h    j    k    l    ;    '    \                                kp4  kp5  kp6
-  lsft 102d z    x    c    v    b    n    m    ,    .    /    rsft            up               kp1  kp2  kp3  kprt
-  lctl lmet lalt           spc                 ralt rmet cmp  rctl       left down rght        kp0       kp.
-)
-
-(deflayer win_layer
-  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup        nlck kp/  kp*  kp-
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    ret   del  end  @ini       kp7  kp8  kp9  kp+
-  caps a    s    d    f    g    h    j    @tls    l    ;    '    \                                kp4  kp5  kp6
-  lsft 102d z    x    c    v    b    n    m    ,    .    /    rsft            up               kp1  kp2  kp3  kprt
-  lctl lmet lalt           spc                 ralt rmet cmp  rctl       left down rght        kp0       kp.
+;; ! @ # = ? '' ""
+;; + * ^ `` % $ ~
+(deflayer sym2_layer
+  esc  f1   f2   f3   f4   f5   f6     f7   f8   f9   f10  f11  f12        ssrq slck pause
+  grv  1    2    3    4    5    6      7    8    9    0    -    =    bspc  ins  home pgup        nlck kp/  kp*  kp-
+  tab  q    w    e    r    t    y      RA-2 S-2  RA-3 S-1  [    ]    ret   del  end  pgdn        kp7  kp8  kp9  kp+
+  caps a    s    d    f    g    RA-grv S-7  RA-1 S-6  S-0  '    \                                kp4  kp5  kp6
+  lsft 102d z    x    c    v    b      n    m    ,    .    /    rsft            up               kp1  kp2  kp3  kprt
+  lctl lmet lalt           spc                   ralt rmet cmp  rctl       left down rght        kp0       kp1
 )
