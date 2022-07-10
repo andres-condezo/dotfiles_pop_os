@@ -16,6 +16,7 @@ local servers = {
   "yamlls",
   "bashls",
   "clangd",
+  "solargraph",
 }
 
 local settings = {

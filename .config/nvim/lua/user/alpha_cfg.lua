@@ -1,21 +1,80 @@
-local status_ok, alpha = pcall(require, "alpha")
-if not status_ok then
+-- -- dashboard.section.header.val = {
+-- --   [[                                                 ]],
+-- --   [[                                                 ]],
+-- --   [[                                                 ]],
+-- --   [[                                                 ]],
+-- --   [[                               __                ]],
+-- --   [[  ___     ___    ___   __  __ /\_\    ___ ___    ]],
+-- --   [[ / _ `\  / __`\ / __`\/\ \/\ \\/\ \  / __` __`\  ]],
+-- --   [[/\ \/\ \/\  __//\ \_\ \ \ \_/ |\ \ \/\ \/\ \/\ \ ]],
+-- --   [[\ \_\ \_\ \____\ \____/\ \___/  \ \_\ \_\ \_\ \_\]],
+-- --   [[ \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
+-- -- }
+
+
+local present, alpha = pcall(require, "alpha")
+if not present then
   return
 end
 
-local dashboard = require "alpha.themes.dashboard"
-dashboard.section.header.val = {
+local dashboard = require("alpha.themes.dashboard")
+-- local icons = require("icons")
+local fn = vim.fn
+local config_dir = fn.stdpath('config')
+
+-- ╭──────────────────────────────────────────────────────────╮
+-- │ Header                                                   │
+-- ╰──────────────────────────────────────────────────────────╯
+
+local header = {
   [[                                                 ]],
   [[                                                 ]],
   [[                                                 ]],
+  [[███    ██ ███████  ██████  ██    ██ ██ ███    ███]],
+  [[████   ██ ██      ██    ██ ██    ██ ██ ████  ████]],
+  [[██ ██  ██ █████   ██    ██ ██    ██ ██ ██ ████ ██]],
+  [[██  ██ ██ ██      ██    ██  ██  ██  ██ ██  ██  ██]],
+  [[██   ████ ███████  ██████    ████   ██ ██      ██]],
   [[                                                 ]],
-  [[                               __                ]],
-  [[  ___     ___    ___   __  __ /\_\    ___ ___    ]],
-  [[ / _ `\  / __`\ / __`\/\ \/\ \\/\ \  / __` __`\  ]],
-  [[/\ \/\ \/\  __//\ \_\ \ \ \_/ |\ \ \/\ \/\ \/\ \ ]],
-  [[\ \_\ \_\ \____\ \____/\ \___/  \ \_\ \_\ \_\ \_\]],
-  [[ \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
+  [[                                                 ]],
 }
+
+dashboard.section.header.type = "text";
+dashboard.section.header.val = header;
+dashboard.section.header.opts = {
+  position = "center",
+  hl = "Include",
+}
+
+-- ╭──────────────────────────────────────────────────────────╮
+-- │ Heading Info                                             │
+-- ╰──────────────────────────────────────────────────────────╯
+
+local thingy = io.popen('echo "$(date +%a) $(date +%d) $(date +%b)" | tr -d "\n"')
+if thingy == nil then return end
+local date = thingy:read("*a")
+thingy:close()
+
+
+local middle = {
+  [[                                                 ]],
+  "                    " .. date .. "              ",
+  [[                                                 ]],
+  [[                                                 ]],
+}
+local hi_top_section = {
+  type = "text",
+  val =  middle,
+  opts = {
+    position = "center",
+    hl = "Type"
+  }
+}
+
+-- ╭──────────────────────────────────────────────────────────╮
+-- │ Buttons                                                  │
+-- ╰──────────────────────────────────────────────────────────╯
+
 dashboard.section.buttons.val = {
   dashboard.button("e", " " .. " New file", ":ene <BAR> startinsert <CR>"),
   dashboard.button("f", " " .. " Find file", ":Telescope find_files <CR>"),
@@ -26,16 +85,88 @@ dashboard.section.buttons.val = {
   dashboard.button("c", " " .. " Config", ":e ~/.config/nvim/init.lua <CR>"),
   dashboard.button("q", " " .. " Quit", ":qa<CR>"),
 }
-local function footer()
-  return "adrs"
+
+-- ╭──────────────────────────────────────────────────────────╮
+-- │ Footer                                                   │
+-- ╰──────────────────────────────────────────────────────────╯
+
+local function file_exists(file)
+  local f = io.open(file, "rb")
+  if f then f:close() end
+  return f ~= nil
 end
 
-dashboard.section.footer.val = footer()
+local function line_from(file)
+  if not file_exists(file) then return {} end
+  local lines = {}
+  for line in io.lines(file) do
+    lines[#lines + 1] = line
+  end
+  return lines
+end
 
-dashboard.section.footer.opts.hl = "Type"
-dashboard.section.header.opts.hl = "Include"
-dashboard.section.buttons.opts.hl = "Keyword"
+local function footer()
+  local v = vim.version()
+  local anvim_version = line_from(config_dir .. "/.anvim.version")
+  return string.format(" v%d.%d.%d   adrs nvim %s ", v.major, v.minor, v.patch, anvim_version[1])
+end
 
-dashboard.opts.opts.noautocmd = true
-alpha.setup(dashboard.opts)
+dashboard.section.footer.val = {
+  footer()
+}
+dashboard.section.footer.opts = {
+  position = "center",
+  hl = "Type",
+}
 
+local section = {
+  header = dashboard.section.header,
+  hi_top_section = hi_top_section,
+  buttons = dashboard.section.buttons,
+  footer = dashboard.section.footer,
+}
+
+local opts = {
+  layout = {
+    {type = "padding", val = 5},
+    section.header,
+    {type = "padding", val = 1},
+    section.hi_top_section,
+    {type = "padding", val = 2},
+    section.buttons,
+    {type = "padding", val = 5},
+    section.footer,
+  },
+  opts = {
+    margin = 5
+  },
+}
+
+-- ╭──────────────────────────────────────────────────────────╮
+-- │ Setup                                                    │
+-- ╰──────────────────────────────────────────────────────────╯
+
+alpha.setup(opts)
+
+-- ╭──────────────────────────────────────────────────────────╮
+-- │ Hide tabline and statusline on startup screen            │
+-- ╰──────────────────────────────────────────────────────────╯
+vim.api.nvim_create_augroup("alpha_tabline", { clear = true })
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = "alpha_tabline",
+  pattern = "alpha",
+  command = "set showtabline=0 laststatus=0 noruler",
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = "alpha_tabline",
+  pattern = "alpha",
+  callback = function()
+    vim.api.nvim_create_autocmd("BufUnload", {
+      group = "alpha_tabline",
+      buffer = 0,
+      command = "set showtabline=2 ruler laststatus=3",
+    })
+  end,
+})

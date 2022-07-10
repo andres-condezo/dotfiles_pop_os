@@ -107,10 +107,7 @@ local more_v_opts = {
 
 local mappings = {
   ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
-
-  -- ["b"] = { "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>jk",
-  -- "Buffers list" },
-  ["b"] = { "<cmd>lua require'telescope.builtin'.buffers(require('telescope.themes').get_dropdown({}))<cr>jk",
+  ["b"] = { "<cmd>lua require'telescope.builtin'.buffers(require('telescope.themes').get_dropdown({}))<cr>",
   "Buffers list" },
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
@@ -206,6 +203,7 @@ local mappings = {
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
     c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
     h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
+    H = { "<cmd>Telescope command_history<cr>", "Command history" },
     M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
     p = { "<cmd>Telescope projects<cr>", "Projects" },
     r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
@@ -245,21 +243,27 @@ local mappings = {
 
 local more_mappings = {
   ["c"] = { "<cmd>:Telescope neoclip<CR>jk", "Neo clip" },
-  ["d"] = { "<cmd>lua showDate()<CR>jk", "Show date and time" },
   ["n"] = { "<cmd>Telescope notify<CR>", "Show notifications" },
   ["r"] = { ":SearchBoxReplace confirm=menu<CR>", "Replace" },
   ["s"] = { ":SearchBoxMatchAll clear_matches=true<CR>", "Search" },
+  ["$"] = { "<cmd>lua showDate()<CR>jk", "Show date and time" },
 
   f = {
     name = "Folds",
     a = { "zfa", "Fold all ..."},
     c = { "zM | zo | zz", "Fold all except current one"},
-    d = { "<cmd>:autocmd! Ufo TextChanged * | :autocmd! Ufo InsertLeave *<CR>", "Fold OnChange Disabled" },
+    d = { "<cmd>:autocmd! Ufo TextChanged * | :autocmd! Ufo InsertLeave * | :autocmd! Ufo BufWritePost * | :autocmd! Ufo CmdlineLeave *  <CR>", "Fold OnChange Disabled" },
     f = { "zM", "Close all folds" },
     l = { "<cmd>:loadview<CR>", "Load folds"},
     n = { "<cmd>:lua require'user.toggleFoldColumn'.toggleFoldCol()<CR>", "Toggle fold column" },
     o = { "zO", "Open all folds under cursor" },
     r = { "zR | zz", "Open all folds" },
+  },
+
+  h = {
+    name = "highlight",
+    h = { "<cmd>:lua require('hlargs').setup()<CR>", "Neo clip" },
+    t = { "<cmd>:lua require('hlargs').toggle()<CR>", "Neo clip" },
   },
 
   t = {
@@ -286,6 +290,15 @@ local more_mappings = {
 }
 
 local v_mappings = {
+  s = {
+    name = "Search",
+    h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
+    H = { "<cmd>Telescope command_history<cr>", "Command history" },
+    M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
+    R = { "<cmd>Telescope registers<cr>", "Registers" },
+    k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
+    C = { "<cmd>Telescope commands<cr>", "Commands" },
+  },
   x = {
     name = "Run code",
     x = { "<Plug>SnipRun", "Run code"},

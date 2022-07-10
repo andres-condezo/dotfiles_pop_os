@@ -1,5 +1,6 @@
-vim.api.nvim_set_keymap('n', '<leader>mm', [[<Cmd>lua require('material.functions').toggle_style()<CR>]], { noremap = true, silent = true })
-vim.g.material_style = "darker"
+vim.api.nvim_set_keymap('n', '<leader>mk', "<Cmd>lua require('material.functions').toggle_style()<CR>", { noremap = true, silent = true })
+-- vim.g.material_style = "darker"
+vim.g.material_style = "deep ocean"
 
 require('material').setup({
 

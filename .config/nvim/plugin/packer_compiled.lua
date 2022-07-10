@@ -134,6 +134,11 @@ _G.packer_plugins = {
     path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/cmp-neosnippet",
     url = "https://github.com/notomo/cmp-neosnippet"
   },
+  ["cmp-npm"] = {
+    loaded = true,
+    path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/cmp-npm",
+    url = "https://github.com/David-Kunz/cmp-npm"
+  },
   ["cmp-nvim-lsp"] = {
     loaded = true,
     path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
@@ -204,11 +209,6 @@ _G.packer_plugins = {
     path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/fine-cmdline.nvim",
     url = "https://github.com/VonHeikemen/fine-cmdline.nvim"
   },
-  firenvim = {
-    loaded = true,
-    path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/firenvim",
-    url = "https://github.com/glacambre/firenvim"
-  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/friendly-snippets",
@@ -228,6 +228,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/gruvbox-baby",
     url = "https://github.com/luisiacc/gruvbox-baby"
+  },
+  ["hlargs.nvim"] = {
+    loaded = true,
+    path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/hlargs.nvim",
+    url = "https://github.com/m-demare/hlargs.nvim"
   },
   ["hop.nvim"] = {
     loaded = true,
@@ -263,6 +268,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/keymap-layer.nvim",
     url = "https://github.com/anuvyklack/keymap-layer.nvim"
+  },
+  ["kmonad-vim"] = {
+    loaded = true,
+    path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/kmonad-vim",
+    url = "https://github.com/kmonad/kmonad-vim"
   },
   ["lspkind.nvim"] = {
     loaded = true,
@@ -360,6 +370,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/nvim-snippy",
     url = "https://github.com/dcampos/nvim-snippy"
+  },
+  ["nvim-spectre"] = {
+    loaded = true,
+    path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/nvim-spectre",
+    url = "https://github.com/windwp/nvim-spectre"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
@@ -459,6 +474,11 @@ _G.packer_plugins = {
     path = "/home/adrsp/.local/share/nvim/site/pack/packer/opt/splitjoin.vim",
     url = "https://github.com/AndrewRadev/splitjoin.vim"
   },
+  ["syntax-tree-surfer"] = {
+    loaded = true,
+    path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/syntax-tree-surfer",
+    url = "https://github.com/ziontee113/syntax-tree-surfer"
+  },
   tabular = {
     loaded = true,
     path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/tabular",
@@ -483,6 +503,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["toggle-lsp-diagnostics.nvim"] = {
+    loaded = true,
+    path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/toggle-lsp-diagnostics.nvim",
+    url = "https://github.com/WhoIsSethDaniel/toggle-lsp-diagnostics.nvim"
   },
   ["toggleterm.nvim"] = {
     loaded = true,
@@ -563,6 +588,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/vim-rails",
     url = "https://github.com/tpope/vim-rails"
+  },
+  ["vim-repeat"] = {
+    loaded = true,
+    path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/vim-repeat",
+    url = "https://github.com/tpope/vim-repeat"
+  },
+  ["vim-rubocop"] = {
+    loaded = true,
+    path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/vim-rubocop",
+    url = "https://github.com/ngmy/vim-rubocop"
   },
   ["vim-ruby"] = {
     loaded = true,
@@ -647,7 +682,7 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
-vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-preview.nvim', 'vim-markdown'}, { ft = "markdown" }, _G.packer_plugins)]]
+vim.cmd [[au FileType markdown ++once lua require("packer.load")({'vim-markdown', 'markdown-preview.nvim'}, { ft = "markdown" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
 vim.cmd("augroup END")
 vim.cmd [[augroup filetypedetect]]

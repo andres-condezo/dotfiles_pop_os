@@ -42,6 +42,10 @@ cmp.setup({
 			i = cmp.mapping.abort(),
 			c = cmp.mapping.close(),
 		}),
+		["<A-o>"] = cmp.mapping({
+			i = cmp.mapping.abort(),
+			c = cmp.mapping.close(),
+		}),
 		-- Accept currently selected item. If none selected, `select` first item.
 		-- Set `select` to `false` to only confirm explicitly selected items.
 		["<CR>"] = cmp.mapping.confirm({ select = true }),
@@ -86,10 +90,11 @@ cmp.setup({
         ultisnips = "[UltiSnip]",
         buffer = "[Buf]",
         nvim_lsp = "[LSP]",
-        nvim_lua = "[API]",
+        nvim_lua = "[LuaAPI]",
         cmp_tabnine = "[TabNine]",
         path = "[Path]",
 				emoji = "[emoji]",
+				npm = "[npm]",
       },
     },
   },
@@ -105,6 +110,7 @@ cmp.setup({
 		{ name = "buffer" },
 		{ name = "path" },
     { name = 'emoji' },
+		{ name = 'npm', keyword_length = 4 },
 	},
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,

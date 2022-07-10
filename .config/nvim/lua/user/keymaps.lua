@@ -37,7 +37,9 @@ keymap("n", "<Leader>v", ":vsplit<CR>", opts)
 
 -- Insert --
 -- Press jk fast to enter
-keymap("i", "jk", "<ESC>", opts)
+-- keymap("i", "jk", "<ESC>", opts)
+-- keymap("x", "ñ", "<ESC>", opts)
+-- keymap("v", "ñ", "<ESC>", opts)
 
 -- Visual --
 -- Stay in indent mode
@@ -54,8 +56,8 @@ keymap("v", "p", '"_dP', opts)
 -- Visual Block --
 
 -- Move text up and down
-keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
+keymap("x", "<C-A-j>", ":move '>+1<CR>gv-gv", opts)
+keymap("x", "<C-A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- Plugins --
 

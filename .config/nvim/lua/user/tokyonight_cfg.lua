@@ -1,0 +1,5 @@
+-- vim.g.tokyonight_style = "day"
+-- vim.o.background = "light"
+vim.o.background = "dark"
+-- vim.g.tokyonight_style = "storm"
+vim.g.tokyonight_style = "night"
