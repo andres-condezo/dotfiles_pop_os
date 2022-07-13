@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# show ip of web01
+IP="34.139.135.216"
+echo $IP | tr -d '\n' | xclip && echo "web01 ip $IP copied to clipboard"
