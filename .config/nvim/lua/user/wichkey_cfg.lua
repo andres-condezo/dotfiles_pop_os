@@ -184,6 +184,7 @@ local mappings = {
 
   m = {
     name = "Session",
+    c = { "<cmd>SessionManager load_current_dir_session<cr>", "Load current session" },
     d = { "<cmd>SessionManager delete_session<cr>", "Delete session" },
     l = { "<cmd>SessionManager load_session<cr>", "Load session" },
     s = { "<cmd>lua savedSession()<CR>", "Save session" },

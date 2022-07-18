@@ -11,6 +11,21 @@ end
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
 nvim_tree.setup {
+  update_cwd = false,
+  actions = {
+    open_file = {
+      quit_on_open = true,
+    },
+    change_dir = {
+      enable = false,
+      global = false,
+    },
+  },
+  update_focused_file = {
+    enable = true,
+    update_cwd = false,
+    ignore_list = {},
+  },
   renderer = {
     root_folder_modifier = ":t",
     icons = {
@@ -62,3 +77,29 @@ nvim_tree.setup {
     },
   },
 }
+
+-- require('nvim-tree').setup({
+--   hijack_netrw = true,
+--   hijack_cursor = true,
+--   -- nvim_tree_respect_buf_cwd = false,
+--   update_cwd = false,
+--   actions = {
+--     open_file = {
+--       quit_on_open = true,
+--     },
+--     change_dir = {
+--       enable = false,
+--       global = false,
+--     },
+--   },
+--   update_focused_file = {
+--     enable = true,
+--     update_cwd = false,
+--     ignore_list = {},
+--   },
+--   git = {
+--     enable = true,
+--     ignore = false,
+--     timeout = 500,
+--   }
+-- })
