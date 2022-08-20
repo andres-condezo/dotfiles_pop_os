@@ -189,6 +189,11 @@ _G.packer_plugins = {
     path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/codi.vim",
     url = "https://github.com/metakirby5/codi.vim"
   },
+  ["color-picker.nvim"] = {
+    loaded = true,
+    path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/color-picker.nvim",
+    url = "https://github.com/ziontee113/color-picker.nvim"
+  },
   ["colorbuddy.nvim"] = {
     loaded = true,
     path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/colorbuddy.nvim",
@@ -331,6 +336,11 @@ _G.packer_plugins = {
     path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
+  ["nvim-colorizer.lua"] = {
+    loaded = true,
+    path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
+    url = "https://github.com/norcalli/nvim-colorizer.lua"
+  },
   ["nvim-dap"] = {
     loaded = true,
     path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/nvim-dap",
@@ -451,6 +461,11 @@ _G.packer_plugins = {
     path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/promise-async",
     url = "https://github.com/kevinhwang91/promise-async"
   },
+  ["rest.nvim"] = {
+    loaded = true,
+    path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/rest.nvim",
+    url = "https://github.com/NTBBloodbath/rest.nvim"
+  },
   ["rose-pine"] = {
     loaded = true,
     path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/rose-pine",
@@ -543,6 +558,21 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/vim-code-dark",
     url = "https://github.com/tomasiser/vim-code-dark"
+  },
+  ["vim-dadbod"] = {
+    loaded = true,
+    path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/vim-dadbod",
+    url = "https://github.com/tpope/vim-dadbod"
+  },
+  ["vim-dadbod-ui"] = {
+    loaded = true,
+    path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/vim-dadbod-ui",
+    url = "https://github.com/kristijanhusak/vim-dadbod-ui"
+  },
+  ["vim-dotenv"] = {
+    loaded = true,
+    path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/vim-dotenv",
+    url = "https://github.com/tpope/vim-dotenv"
   },
   ["vim-fugitive"] = {
     loaded = true,
@@ -643,6 +673,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/vim-vsnip",
     url = "https://github.com/hrsh7th/vim-vsnip"
+  },
+  vimwiki = {
+    loaded = true,
+    path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/vimwiki",
+    url = "https://github.com/vimwiki/vimwiki"
   },
   ["which-key.nvim"] = {
     loaded = true,

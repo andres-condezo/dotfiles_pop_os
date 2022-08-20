@@ -1,5 +1,6 @@
 (defcfg
   input  (device-file "/dev/input/by-id/usb-_USB_Keyboard-event-kbd")
+  ;; input  (device-file "/dev/input/by-id/usb-SIGMACHIP_USB_Keyboard-event-kbd")
   output (uinput-sink "My KMonad output"
     ;; To understand the importance of the following line, see the section on
     ;; Compose-key sequences at the near-bottom of this file.
@@ -65,7 +66,7 @@
 
 (deflayer init_layer
   caps f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
-  grv  1    2    3    4    5    6    esc  ret  bspc 0    -    =    bspc  ins  home @qwe        nlck kp/  kp*  kp-
+  grv  1    2    3    4    5    6    7  ret  bspc 0    -    =    bspc  ins  home @qwe        nlck kp/  kp*  kp-
   tab  q    @sy2 e    r    @tx1 y    u    @lf1 @lf2 p    [    ]    ret   del  end  pgdn        kp7  kp8  kp9  kp+
   esc  @num s    @met @lsf @fun h    j    k    l    @rsf '    \                                kp4  kp5  kp6
   lsft 102d z    x    @lct @lal b   @sym @rct  ,    .    /    rsft            up               kp1  kp2  kp3  kprt
@@ -112,7 +113,7 @@
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup        nlck kp/  kp*  kp-
   tab  home lmet @chw @wsp tab  ins  pgup ret  esc  p    RA-8 RA-9 ret   del  end  pgdn        kp7  kp8  kp9  kp+
-  caps end  del  bspc @lsf pgdn left down up   rght ;    RA-' RA-0                             kp4  kp5  kp6
+  caps end  del  bspc @lsf pgdn left down up   rght @rsf RA-' RA-0                             kp4  kp5  kp6
   lsft 102d z    x    @lct @wtb caps @lal @rct ,    .    /    rsft            up               kp1  kp2  kp3  kprt
   lctl lmet lalt           spc                 ralt rmet cmp  rctl       left down rght        kp0       kp.
 )

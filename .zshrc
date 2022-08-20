@@ -185,8 +185,8 @@ codi() {
     Codi $syntax" "$@"
 }
 
-#---------------------------------------------------------------
-#-------------------  BINDKEYS AND EXPORTS ----------------------------------
+#------------------------------------------------------------
+#------------BINDKEYS AND EXPORTS --------------------------
 
 # bindkey -M menuselect '^M' .accept-line
 bindkey '\ey' autosuggest-accept
@@ -198,37 +198,52 @@ LS_COLORS=$LS_COLORS:'tw=01;35:ow=01;35:' ; export LS_COLORS
 # export VISUAL='nvim'
 autoload edit-command-line; zle -N edit-command-line
 
+
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+        source /etc/profile.d/vte.sh
+fi
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# export FZF_DEFAULT_COMMAND="fdfind --exclude={.git,.sass-cache} --type f"
+# source /usr/share/fzf/completion.zsh
+# source /usr/share/fzf/key-bindings.zsh
+# export FZF_DEFAULT_COMMAND='alias ag=ag . --path-to-ignore ~/.ignore'
+
+
+# xsetwacom set "Wacom Intuos S 2 Pen stylus" Button 2 "pan"
+# xsetwacom --set "Wacom Intuos S 2 Pen stylus" "PanScrollThreshold" 200
+
+#------------------------------------------------------------
+#---------------------PATHS --------------------------------
+
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
 export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
 
 export PATH=$PATH:'/home/adrsp/.scripts'
 
-if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-        source /etc/profile.d/vte.sh
-fi
+export PATH=$PATH:/home/adrsp/.cargo/bin
 
-export SPICETIFY_INSTALL="/home/adrsp/spicetify-cli"
-export PATH="$SPICETIFY_INSTALL:$PATH"
+# bun completions
+[ -s "/home/adrsp/.bun/_bun" ] && source "/home/adrsp/.bun/_bun"
 
-#. /etc/profile.d/vte.sh
+# bun
+export BUN_INSTALL="/home/adrsp/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+#-------------------------------------------------------------
+#-----------------VERSION MANAGERS --------------------------
+
+# ruby version manager
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init - zsh)"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# export FZF_DEFAULT_COMMAND="fdfind --exclude={.git,.sass-cache} --type f"
-export FZF_DEFAULT_COMMAND='alias ag=ag . --path-to-ignore ~/.ignore'
-
-# source /usr/share/fzf/completion.zsh
-# source /usr/share/fzf/key-bindings.zsh
-
-xsetwacom set "Wacom Intuos S 2 Pen stylus" Button 2 "pan"
-xsetwacom --set "Wacom Intuos S 2 Pen stylus" "PanScrollThreshold" 200
-
+# node version manager
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export PATH=$PATH:/home/adrsp/.cargo/bin

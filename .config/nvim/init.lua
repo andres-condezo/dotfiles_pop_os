@@ -23,19 +23,25 @@ require "user.material_cfg"
 require "user.neon_cfg"
 require "user.colorscheme"
 
--- General
+-- ╭─────────────────────────╮
+-- │ General                 │
+-- ╰─────────────────────────╯
 require "user.options"
 require "user.autocommands"
 require "user.wichkey_cfg"
 require "user.keymaps"
-require "user.toggleFoldColumn"
+require "user.toggleOpt"
 require "user.clr-cmd"
 require "user.hydra-windows_cfg"
 require "user.hydra-git_cfg"
 require "user.hydra-markdown_cfg"
+require "user.hydra-wiki_cfg"
+require "user.hydra-rest_cfg"
 require "user.plugins"
 
--- Plugins
+-- ╭─────────────────────────╮
+-- │ Plugins                 │
+-- ╰─────────────────────────╯
 require "user.alpha_cfg"
 require "user.lualine_cfg"
 require "user.lualine-t_cfg"
@@ -65,4 +71,8 @@ require "user.nvim-neoclip_cfg"
 require "user.surfer"
 require "user.nvim-spectre_cfg"
 require "user.toggle-lsp_cfg"
+require "user.rest_cfg"
+require "user.dbui_cfg"
+require "user.color-picker_cfg"
+require "user.colorizer_cfg"
 -- require "user.ale_cfg"
