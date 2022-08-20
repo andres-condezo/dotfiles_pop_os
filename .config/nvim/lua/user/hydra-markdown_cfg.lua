@@ -4,10 +4,10 @@ Hydra({
    config = {
       color = 'pink',
       invoke_on_body = true,
-      hint = {
-         position = 'bottom',
-         border = 'rounded'
-      },
+      -- hint = {
+      --    position = 'bottom',
+      --    border = 'rounded'
+      -- },
       on_enter = function()
          -- vim.bo.modifiable = false
          vim.cmd "let g:table_mode_corner='|'"
@@ -19,7 +19,7 @@ Hydra({
       end
    },
    mode = {'n','x'},
-   body = 'mm',
+   body = 'md',
    heads = {
       -- Index
       { 'II', '<C-w>h', { silent = true } },
@@ -36,6 +36,8 @@ Hydra({
       { 'gx', '<Plug>Markdown_OpenUrlUnderCursor', { desc = "<-Nav|", silent = true } },
 
       -- Mode
+      { 'gm', ':set filetype=markdown<CR>', { silent = true } },
+      { 'gw', ':set filetype=vimwiki<CR>', { silent = true } },
       { 'P', ':MarkdownPreviewToggle<CR>', { silent = true } },
       { 'T', ':TableModeToggle<CR>', { silent = true } },
       { 'X', '<cmd>Toc<CR><C-w>H<cmd>vertical resize 20<CR><CR> \

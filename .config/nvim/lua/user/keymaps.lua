@@ -24,6 +24,12 @@ keymap("n", "<A-j>", "<C-w>j", opts)
 keymap("n", "<A-k>", "<C-w>k", opts)
 keymap("n", "<A-l>", "<C-w>l", opts)
 
+keymap("n", "<C-j>", "J", opts)
+keymap("n", "<C-A-k>", "K", opts)
+
+keymap("n", "J", "}", opts)
+keymap("n", "K", "{", opts)
+
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
@@ -38,7 +44,6 @@ keymap("n", "<Leader>v", ":vsplit<CR>", opts)
 -- Insert --
 -- Press jk fast to enter
 -- keymap("i", "jk", "<ESC>", opts)
--- keymap("x", "ñ", "<ESC>", opts)
 -- keymap("v", "ñ", "<ESC>", opts)
 
 -- Visual --
@@ -52,6 +57,9 @@ keymap("v", "<A-k>", ":m .-2<CR>==", opts)
 
 -- Paste
 keymap("v", "p", '"_dP', opts)
+
+keymap("n", "n", 'nzz', opts)
+keymap("n", "N", 'Nzz', opts)
 
 -- Visual Block --
 

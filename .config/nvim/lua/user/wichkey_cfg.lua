@@ -112,7 +112,7 @@ local mappings = {
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
   ["f"] = {
-    "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+    "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{hidden = true})<cr>",
     "Find files" },
   ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
   ["o"] = { "<cmd>BufCurOnly<cr>", "Close all buffers except Current one" },
@@ -228,6 +228,7 @@ local mappings = {
     name = "Save",
     a = { "<cmd>wa | :qa<CR>", "Save all buffer and exit" },
     e = { "<cmd>wq<CR>", "Save current buffer and close it" },
+    k = { "<Plug>VimwikiIndex", "VimWiki" },
     s = { "<cmd>execute ':silent w !sudo tee % > /dev/null' | :edit!<CR>", "Save with sudo permission" },
     w = { "<cmd>w!<CR>", "Save current buffer" },
   },
@@ -256,21 +257,28 @@ local more_mappings = {
     d = { "<cmd>:autocmd! Ufo TextChanged * | :autocmd! Ufo InsertLeave * | :autocmd! Ufo BufWritePost * | :autocmd! Ufo CmdlineLeave *  <CR>", "Fold OnChange Disabled" },
     f = { "zM", "Close all folds" },
     l = { "<cmd>:loadview<CR>", "Load folds"},
-    n = { "<cmd>:lua require'user.toggleFoldColumn'.toggleFoldCol()<CR>", "Toggle fold column" },
+    n = { "<cmd>:lua require'user.toggleOpt'.toggleFoldCol()<CR>", "Toggle fold column" },
     o = { "zO", "Open all folds under cursor" },
     r = { "zR | zz", "Open all folds" },
   },
 
   h = {
     name = "highlight",
-    h = { "<cmd>:lua require('hlargs').setup()<CR>", "Neo clip" },
-    t = { "<cmd>:lua require('hlargs').toggle()<CR>", "Neo clip" },
+    h = { "<cmd>:lua require('hlargs').setup()<CR>", "Highlight args" },
+    t = { "<cmd>:lua require('hlargs').toggle()<CR>", "Toggle highlight args" },
+  },
+
+  m = {
+    name = "more",
+    e = { "<cmd>:e .env<CR>", "Env file" },
+    r = { "<cmd>:e requests.http<CR>", "Request file" },
   },
 
   t = {
-    name = "Tabline",
-    s = { "<cmd>:set showtabline=3<CR>", "Show tabline" },
-    n = { "<cmd>:set showtabline=0<CR>", "Hide tabine" },
+    name = "toggle",
+    f = { "<cmd>:lua require'user.toggleOpt'.toggleFoldCol()<CR>", "Toggle fold column" },
+    n = { "<cmd>:lua require'user.toggleOpt'.toggleRelativeNumber()<CR>", "Toggle relative numbers" },
+    t = { "<cmd>:lua require'user.toggleOpt'.toggleTabLine()<CR>", "Toggle Tabline" },
   },
 
   w = {

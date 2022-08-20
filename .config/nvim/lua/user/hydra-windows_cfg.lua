@@ -2,7 +2,7 @@ local Hydra = require('hydra')
 
 Hydra({
    config = {
-      timeout = 4000,
+      timeout = 8000,
       hint = {
          border = 'rounded'
       }

@@ -22,8 +22,10 @@ Hydra({
          vim.bo.modifiable = false
          gitsigns.toggle_signs(true)
          gitsigns.toggle_linehl(true)
+         vim.cmd "colorscheme kanagawa"
       end,
       on_exit = function()
+         vim.cmd "colorscheme darkplus"
          gitsigns.toggle_signs(false)
          gitsigns.toggle_linehl(false)
          gitsigns.toggle_deleted(false)

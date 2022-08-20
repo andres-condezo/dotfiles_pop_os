@@ -6,7 +6,7 @@ local keymap = vim.api.nvim_set_keymap
 
 -- Clear comand line
 _G.clearCmd = function ()
-  vim.fn.timer_start(3000, function()
+  vim.fn.timer_start(12000, function()
     vim.cmd('echo')
   end)
 end

@@ -162,6 +162,30 @@ return packer.startup(function(use)
 
   use { 'kmonad/kmonad-vim' }
 
+  -- use { 'dense-analysis/ale' }
+
+  use {
+    "NTBBloodbath/rest.nvim",
+    requires = { "nvim-lua/plenary.nvim" },
+  }
+
+  use { 'https://github.com/tpope/vim-dotenv' }
+
+  use { 'tpope/vim-dadbod' }
+
+  use { 'kristijanhusak/vim-dadbod-ui',
+    requires = {
+      'tpope/vim-dadbod',
+      'tpope/vim-dotenv',
+    }
+  }
+
+  use { 'ziontee113/color-picker.nvim' }
+
+  use { 'norcalli/nvim-colorizer.lua' }
+
+  use { 'vimwiki/vimwiki' }
+
   -- Ruby / Rails
   use "kana/vim-textobj-user"
   use "https://github.com/whatyouhide/vim-textobj-erb"
@@ -169,7 +193,6 @@ return packer.startup(function(use)
   use "tpope/vim-rails"
   use { 'ngmy/vim-rubocop' }
 
-  -- use { 'dense-analysis/ale' }
 
   -- React
   use "tpope/vim-surround"

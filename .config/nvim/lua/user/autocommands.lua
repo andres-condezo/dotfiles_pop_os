@@ -80,7 +80,7 @@ _G.reloadSources = function ()
 end
 vim.cmd "command! Reload execute 'lua reloadSources()'"
 
--- Call reload to apply the latest init.lua contents
+-- Save current session
 _G.savedSession = function ()
   vim.cmd(':SessionManager save_current_session')
   vim.notify("Saved session", "info", { title = "Session Manager" })
@@ -92,4 +92,21 @@ _G.showDate = function ()
   vim.notify(dt, "info", { timeout = 3000, render = "minimal" })
 end
 
--- vim.cmd "autocmd BufWinLeave *.* mkview"
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = { "md", "markdown" },
+  callback = function()
+    vim.cmd [[
+      set filetype=markdown
+    ]]
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = { "http" },
+  callback = function()
+    vim.cmd [[
+      autocmd BufWinLeave *.* mkview
+      autocmd BufWinEnter *.* silent! loadview
+    ]]
+  end,
+})
