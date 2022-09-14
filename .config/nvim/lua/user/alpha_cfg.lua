@@ -77,9 +77,10 @@ dashboard.section.buttons.val = {
   dashboard.button("f", " " .. " Find file", ":lua require('telescope.builtin').find_files({hidden = true})<CR>"),
   dashboard.button("p", " " .. " Find project", ":lua require('telescope').extensions.projects.projects()<CR>"),
   dashboard.button("r", " " .. " Recent files", ":Telescope oldfiles <CR>"),
-  dashboard.button("t", " " .. " Find text", ":Telescope live_grep <CR>"),
+  -- dashboard.button("t", " " .. " Find text", ":Telescope live_grep <CR>"),
   dashboard.button("s", " " .. " Find session", ":SessionManager load_session<CR>"),
   dashboard.button("d", " " .. " Database", ":colorscheme kanagawa | :tab DBUI<cr>"),
+  dashboard.button("w", " " .. " Wiki UI Select", ":VimwikiUISelec<CR>"),
   dashboard.button("c", " " .. " Config", ":e ~/.config/nvim/init.lua <CR>"),
   dashboard.button("q", " " .. " Quit", ":qa<CR>"),
 }

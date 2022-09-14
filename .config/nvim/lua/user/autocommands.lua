@@ -110,3 +110,6 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     ]]
   end,
 })
+
+
+vim.api.nvim_command('au BufRead,BufNewFile *.csx set filetype=cs')

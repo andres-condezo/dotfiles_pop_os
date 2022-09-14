@@ -14,7 +14,7 @@ Hydra({
       end
    },
    mode = {'n','x'},
-   body = 'mmt',
+   body = 'mhr',
    heads = {
       -- Motion
       { 'L', '<Plug>RestNvim | <C-w>l', { silent = true } },

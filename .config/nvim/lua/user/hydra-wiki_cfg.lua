@@ -19,9 +19,11 @@ Hydra({
       end
    },
    mode = {'n','x'},
-   body = 'mk',
+   body = 'mhk',
    heads = {
       -- Motion
+      { '<C-j>', '}', { silent = true } },
+      { '<C-k>', '{', { silent = true } },
       { 'L', ':VimwikiFollowLink<CR>', { silent = true } },
       { 'H', ':VimwikiGoBackLink<CR>', { silent = true } },
       { 'J', ':VimwikiNextLink<CR>', { silent = true } },
@@ -34,20 +36,30 @@ Hydra({
 })
 
 vim.cmd [[
-  let g:vimwiki_list = [{'path': '~/vimwiki/',
-                        \ 'syntax': 'markdown', 'ext': '.md'}]
-  let g:vimwiki_markdown_link_ext = 1
+   let tech_wiki = {}
+   let tech_wiki.path = '~/vimwiki/tech_docs/'
+   let tech_wiki.index = 'index'
+   let tech_wiki.html_template = '~/public_html/template.tpl'
+   let tech_wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'javascript': 'js', 'ruby': 'rb'}
+   let tech_wiki.auto_diary_index = 1
+   let tech_wiki.syntax = 'markdown'
+   let tech_wiki.ext = '.md'
 
-  "-----
+   let personal_wiki = {}
+   let personal_wiki.path = '~/vimwiki/personal_docs/'
+   let personal_wiki.index = 'main'
+   let personal_wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'javascript': 'js', 'ruby': 'rb'}
+   let personal_wiki.auto_diary_index = 1
+   let personal_wiki.syntax = 'markdown'
+   let personal_wiki.ext = '.md'
 
-    " let wiki_1 = {}
-    " let wiki_1.path = '~/my_docs/'
-    " let wiki_1.html_template = '~/public_html/template.tpl'
-    " let wiki_1.nested_syntaxes = {'python': 'python', 'c++': 'cpp'}
-    "
-    " let wiki_2 = {}
-    " let wiki_2.path = '~/project_docs/'
-    " let wiki_2.index = 'main'
-    "
-    " let g:vimwiki_list = [wiki_1, wiki_2]
+   let shopping_wiki = {}
+   let shopping_wiki.path = '~/vimwiki/shopping_docs/'
+   let shopping_wiki.index = 'main'
+   let shopping_wiki.auto_diary_index = 1
+   let shopping_wiki.syntax = 'markdown'
+   let shopping_wiki.ext = '.md'
+
+   let g:vimwiki_list = [personal_wiki, tech_wiki, shopping_wiki]
+   let g:vimwiki_markdown_link_ext = 1
 ]]

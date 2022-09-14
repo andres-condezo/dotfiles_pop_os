@@ -114,6 +114,7 @@ alias aenv='source venv/bin/activate'
 alias lsl='exa --icons -1'
 alias last='exa --long --icons -a'
 alias ls='exa --icons --group-directories-first'
+alias gsts='gst -s'
 alias tree='exa --tree --group-directories-first --level=1 --icons'
 alias cat='ccat'
 alias ecom='cd ~/Documents/Freelance/ecommerce/ecommerce'
@@ -233,6 +234,12 @@ export BUN_INSTALL="/home/adrsp/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+export VISUAL=nvim;
+export EDITOR=nvim;
+
+export PATH=$PATH:$HOME/.dotnet/tools
+export PATH=$PATH:$HOME/linuxbrew/.linuxbrew/bin/nvim/
 
 #-------------------------------------------------------------
 #-----------------VERSION MANAGERS --------------------------

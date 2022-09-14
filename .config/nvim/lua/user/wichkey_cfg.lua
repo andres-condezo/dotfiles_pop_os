@@ -105,6 +105,15 @@ local more_v_opts = {
   nowait = true, -- use `nowait` when creating keymaps
 }
 
+local w_opts = {
+  mode = "n", -- NORMAL mode
+  prefix = "w",
+  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true, -- use `silent` when creating keymaps
+  noremap = true, -- use `noremap` when creating keymaps
+  nowait = true, -- use `nowait` when creating keymaps
+}
+
 local mappings = {
   ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
   ["b"] = { "<cmd>lua require'telescope.builtin'.buffers(require('telescope.themes').get_dropdown({}))<cr>",
@@ -228,7 +237,6 @@ local mappings = {
     name = "Save",
     a = { "<cmd>wa | :qa<CR>", "Save all buffer and exit" },
     e = { "<cmd>wq<CR>", "Save current buffer and close it" },
-    k = { "<Plug>VimwikiIndex", "VimWiki" },
     s = { "<cmd>execute ':silent w !sudo tee % > /dev/null' | :edit!<CR>", "Save with sudo permission" },
     w = { "<cmd>w!<CR>", "Save current buffer" },
   },
@@ -264,8 +272,8 @@ local more_mappings = {
 
   h = {
     name = "highlight",
-    h = { "<cmd>:lua require('hlargs').setup()<CR>", "Highlight args" },
-    t = { "<cmd>:lua require('hlargs').toggle()<CR>", "Toggle highlight args" },
+    z = { "<cmd>:lua require('hlargs').setup()<CR>", "Highlight args" },
+    p = { "<cmd>:lua require('hlargs').toggle()<CR>", "Toggle highlight args" },
   },
 
   m = {
@@ -275,16 +283,12 @@ local more_mappings = {
   },
 
   t = {
-    name = "toggle",
+    name = "Toggle",
+    c = { "<cmd>:lua require'user.toggleOpt'.toggleCalendar()<CR>", "Toggle Calendar" },
     f = { "<cmd>:lua require'user.toggleOpt'.toggleFoldCol()<CR>", "Toggle fold column" },
     n = { "<cmd>:lua require'user.toggleOpt'.toggleRelativeNumber()<CR>", "Toggle relative numbers" },
     t = { "<cmd>:lua require'user.toggleOpt'.toggleTabLine()<CR>", "Toggle Tabline" },
-  },
-
-  w = {
-    name = "Wrap",
-    n = { "<cmd>:set nowrap<CR>", "Set no wrap" },
-    r = { "<cmd>:set wrap<CR>", "Set wrap" },
+    w = { "<cmd>:lua require'user.toggleOpt'.toggleWrap()<CR>", "Toggle Wrap" },
   },
 
   z = {
@@ -321,8 +325,20 @@ local more_v_mappings = {
   ["r"] = { "<cmd>SearchBoxReplace confirm=menu visual_mode=true<CR>", "Replace" },
 }
 
+local w_mappings = {
+  ["d"] = { "<Plug>VimwikiDeleteFile", "Delete file" },
+  ["k"] = { "<Plug>VimwikiIndex", "VimWiki index" },
+  ["i"] = { "<Plug>VimwikiDiaryIndex", "VimWiki index" },
+  ["t"] = { "<Plug>VimwikiMakeDiaryNote", "Today's diary" },
+  ["y"] = { "<Plug>VimwikiMakeYesterdayDiaryNote", "Yesterday's diary" },
+  ["m"] = { "<Plug>VimwikiMakeTomorrowDiaryNote", "Tomorrow's diary" },
+  ["u"] = { "<Plug>VimwikiDiaryGenerateLinks", "Wiki UI Select" },
+  ["x"] = { "<cmd>VimwikiUISelec<CR>", "Wiki UI Select" },
+}
+
 which_key.setup(setup)
 which_key.register(mappings, opts)
 which_key.register(v_mappings, v_opts)
 which_key.register(more_mappings, more_opts)
 which_key.register(more_v_mappings, more_v_opts)
+which_key.register(w_mappings,w_opts)

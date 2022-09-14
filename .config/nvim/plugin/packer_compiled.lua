@@ -114,6 +114,11 @@ _G.packer_plugins = {
     path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
     url = "https://github.com/akinsho/bufferline.nvim"
   },
+  ["calendar-vim"] = {
+    loaded = true,
+    path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/calendar-vim",
+    url = "https://github.com/mattn/calendar-vim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -514,6 +519,11 @@ _G.packer_plugins = {
     path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/telescope-vim-bookmarks.nvim",
     url = "https://github.com/tom-anders/telescope-vim-bookmarks.nvim"
   },
+  ["telescope-vimwiki.nvim"] = {
+    loaded = true,
+    path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/telescope-vimwiki.nvim",
+    url = "https://github.com/ElPiloto/telescope-vimwiki.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/adrsp/.local/share/nvim/site/pack/packer/start/telescope.nvim",
@@ -717,7 +727,7 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
-vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-preview.nvim', 'vim-markdown'}, { ft = "markdown" }, _G.packer_plugins)]]
+vim.cmd [[au FileType markdown ++once lua require("packer.load")({'vim-markdown', 'markdown-preview.nvim'}, { ft = "markdown" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
 vim.cmd("augroup END")
 vim.cmd [[augroup filetypedetect]]
