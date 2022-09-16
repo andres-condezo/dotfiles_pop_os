@@ -270,6 +270,7 @@ return packer.startup(function(use)
   use "tom-anders/telescope-vim-bookmarks.nvim"
   use "nvim-telescope/telescope-media-files.nvim"
   use { 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim' }
+  use { "github/copilot.vim" }
 
 
   -- Treesitter
