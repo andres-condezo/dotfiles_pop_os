@@ -63,3 +63,5 @@ vim.cmd [[
    let g:vimwiki_list = [personal_wiki, tech_wiki, shopping_wiki]
    let g:vimwiki_markdown_link_ext = 1
 ]]
+
+require('telescope').load_extension('vimwiki')

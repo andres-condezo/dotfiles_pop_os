@@ -122,6 +122,7 @@ alias pwdf='echo '-------------' && pwd && echo '-------------' && ls'
 alias dnv='docker start -i mynginx2'
 alias keysoup='sudo systemctl restart keyd'
 alias kmd='sudo /etc/sv/kmonad/run'
+alias devd='cd /home/adrsp/Documents/development'
 
 #---------------------------------------------------------------
 #------------------- FUNCTIONS ----------------------------------

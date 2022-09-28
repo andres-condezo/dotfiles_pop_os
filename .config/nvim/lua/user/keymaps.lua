@@ -80,6 +80,9 @@ keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
 
 -- More --
 
+-- keymap("i", "<C-a>", ":copilot#Accept('\\<CR>')<CR>", opts)
+-- vim.g.copilot_no_tab_map = true
+
 -- Reload source
 keymap("n", "<A-r>", ":Reload<CR>", opts)
 

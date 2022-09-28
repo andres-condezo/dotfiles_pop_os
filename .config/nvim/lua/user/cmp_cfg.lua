@@ -22,6 +22,11 @@ local check_backspace = function()
 	return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
 end
 
+vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
+vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { fg = "#CA42F0" })
+vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = "#FDE030" })
+vim.api.nvim_set_hl(0, "CmpItemKindCrate", { fg = "#F64D00" })
+
 cmp.setup({
 	snippet = {
 		expand = function(args)
@@ -85,8 +90,6 @@ cmp.setup({
       with_text = true,
       menu = {
         luasnip = "[LuaSnip]",
-        -- vsnip = "[VSnip]",
-        -- snippy = "[SSnip]",
         ultisnips = "[UltiSnip]",
         buffer = "[Buf]",
         nvim_lsp = "[LSP]",
@@ -100,10 +103,39 @@ cmp.setup({
   },
 
 	sources = {
+		{
+      name = "copilot",
+      -- keyword_length = 0,
+      max_item_count = 3,
+      trigger_characters = {
+        {
+          ".",
+          ":",
+          "(",
+          "'",
+          '"',
+          "[",
+          ",",
+          "#",
+          "*",
+          "@",
+          "|",
+          "=",
+          "-",
+          "{",
+          "/",
+          "\\",
+          "+",
+          "?",
+          " ",
+          -- "\t",
+          -- "\n",
+        },
+      },
+      group_index = 2,
+    },
 		{ name = "luasnip" },
 		{ name = 'ultisnips' }, -- For ultisnips users.
-		-- { name = 'vsnip' }, -- For vsnip users.
-		-- { name = 'snippy' }, -- For snippy users.
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lua" },
 		{ name = "cmp_tabnine" },

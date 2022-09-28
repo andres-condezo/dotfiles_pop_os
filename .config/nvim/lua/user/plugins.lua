@@ -241,6 +241,7 @@ return packer.startup(function(use)
   use "notomo/cmp-neosnippet"
   use { 'hrsh7th/cmp-cmdline' }
   use { 'David-Kunz/cmp-npm' }
+  use "zbirenbaum/copilot-cmp"
 
   -- snippets
   use { "L3MON4D3/LuaSnip", commit = "79b2019c68a2ff5ae4d732d50746c901dd45603a" } --snippet engine
@@ -263,28 +264,37 @@ return packer.startup(function(use)
   use { "neovim/nvim-lspconfig", commit = "148c99bd09b44cf3605151a06869f6b4d4c24455" } -- enable LSP
   use { "williamboman/nvim-lsp-installer", commit = "e9f13d7acaa60aff91c58b923002228668c8c9e6" } -- simple to use language server installer
   use { "jose-elias-alvarez/null-ls.nvim", commit = "ff40739e5be6581899b43385997e39eecdbf9465" } -- for formatters and linters
-
   use { "RRethy/vim-illuminate", commit = "c82e6d04f27a41d7fdcad9be0bce5bb59fcb78e5" } -- Telescope
+
   use { "nvim-telescope/telescope.nvim", commit = "d96eaa914aab6cfc4adccb34af421bdd496468b0" }
   use "nvim-telescope/telescope-ui-select.nvim"
   use "tom-anders/telescope-vim-bookmarks.nvim"
   use "nvim-telescope/telescope-media-files.nvim"
-  use { 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim' }
-  use { "github/copilot.vim" }
+  use { 'MunifTanjim/eslint.nvim' }
 
+  use { 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim' }
+  use {
+    "zbirenbaum/copilot.lua",
+    event = { "VimEnter" },
+    config = function()
+      vim.defer_fn(function()
+        require "user.copilot_cfg"
+      end, 100)
+    end,
+  }
 
   -- Treesitter
-  -- use {
-  --   "nvim-treesitter/nvim-treesitter",
-  --   commit = "518e27589c0463af15463c9d675c65e464efc2fe",
-  -- }
+  use {
+    "nvim-treesitter/nvim-treesitter",
+    commit = "518e27589c0463af15463c9d675c65e464efc2fe",
+  }
 
   -- use {
   --   "nvim-treesitter/nvim-treesitter",
   --   commit = "556388b",
   -- }
 
-  use { "nvim-treesitter/nvim-treesitter" }
+  -- use { "nvim-treesitter/nvim-treesitter" }
   use { 'm-demare/hlargs.nvim' }
   use { "p00f/nvim-ts-rainbow" }
   use "windwp/nvim-ts-autotag"
