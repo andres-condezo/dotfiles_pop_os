@@ -28,7 +28,7 @@ require "user.colorscheme"
 -- ╰─────────────────────────╯
 require "user.options"
 require "user.autocommands"
-require "user.wichkey_cfg"
+require "user.whichkey_cfg"
 require "user.keymaps"
 require "user.toggleOpt"
 require "user.clr-cmd"

@@ -122,6 +122,8 @@ alias keysoup='sudo systemctl restart keyd'
 alias kmd='sudo /etc/sv/kmonad/run'
 alias dvm='cd /home/adrsp/Documents/development'
 alias dv='fd --type f --hidden --exclude .git | fzf-tmux -p --reverse | xargs nvim'
+alias rvim='sudo vim -u ~/.rvimrc'
+alias svim='sudo -E vim'
 
 #---------------------------------------------------------------
 #------------------- FUNCTIONS ----------------------------------

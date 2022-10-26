@@ -51,10 +51,6 @@ keymap("n", "<Leader>v", ":vsplit<CR>", opts)
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
--- Move text up and down
-keymap("v", "<A-j>", ":m .+1<CR>==", opts)
-keymap("v", "<A-k>", ":m .-2<CR>==", opts)
-
 -- Paste
 keymap("v", "p", '"_dP', opts)
 
@@ -64,8 +60,8 @@ keymap("n", "N", 'Nzz', opts)
 -- Visual Block --
 
 -- Move text up and down
-keymap("x", "<C-A-j>", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "<C-A-k>", ":move '<-2<CR>gv-gv", opts)
+keymap("v", "<C-A-j>", ":move '>+1<CR>gv-gv", opts)
+keymap("v", "<C-A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- Plugins --
 
