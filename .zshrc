@@ -4,7 +4,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH="/home/adrsp/.oh-my-zsh"
 
-
 ZSH_THEME="robbyrussell"
 # Set spacship prompt
 
@@ -14,7 +13,6 @@ SPACESHIP_PROMPT_SEPARATE_LINE=false
 SPACESHIP_USER_SHOW=always
 SPACESHIP_PACKAGE_SHOW=false
 SPACESHIP_DIR_TRUNC=0
-
 
 #---------------------------------------------------------------
 #------------------- PLUGINS ----------------------------------
@@ -27,12 +25,12 @@ plugins=(
 	)
 source $ZSH/oh-my-zsh.sh
 
-#---------------------------------------------------------------
+#------------------
 
 # User configuration
 
-#---------------------------------------------------------------
-#------------------- VIM MODE ----------------------------------
+#-------------------
+#------------------- VIM MODE
 
 #Enable vi mode
 
@@ -83,8 +81,8 @@ for m in visual viopp; do
   done
 done
 
-#---------------------------------------------------------------
-#------------------- ALIAS ----------------------------------
+#-------------------
+#------------------- ALIAS
 alias omz="nvim ~/.oh-my-zsh"
 alias c:="cd /media/adrsp/Local"
 alias d:="cd /media/adrsp/Data"
@@ -137,7 +135,6 @@ compc(){
   mv $entry $folder
   ./$folder/$entry
 }
-
 
 ctrlz() {
   if [[ $#BUFFER == 0 ]]; then
