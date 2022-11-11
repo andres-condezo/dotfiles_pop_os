@@ -131,3 +131,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export PATH=$PATH:$HOME/linuxbrew/.linuxbrew/bin/nvim/
+alias fix-opera='sudo ~root/.scripts/fix-opera.sh' # Opera fix HTML5 media
+alias fix-opera='sudo ~root/.scripts/fix-opera.sh' # Opera fix HTML5 media
