@@ -1,0 +1,25 @@
+alias dv=fd --type f --hidden --exclude .git | fzf-tmux -p --reverse | xargs nvim
+
+# soporta regex
+# solo para pdf
+pdfgrep -in "sanchez *.* adi" *.pdf
+
+# puedes buscar una segunda palabra en modo interactivo
+# soporta regex
+# solo para excel (nuevo y antiguo)
+xlsxgrep -HNc "(?i)s[aá]nchez *.* adi" *.xls*
+# tiene vista previa
+xlsxgrep -HN "(?i)s[aá]nchez *.* adi" *.xls* | fzf
+
+# solo para pdf y word nuevo
+# tiene vista previa
+# no soporta regex
+rga-fzf
+
+# solo para pdf, word nuevo y excel antiguo
+# soporta regex
+rga -ic 'sanchez' *.docx
+
+# solo word antiguo
+# soporta regex
+find -iname "*.doc" |xargs -I {} bash -c 'if (antiword {}|grep -i "sanchez *.* adi") > /dev/null 2>&1; then echo {} ; fi'

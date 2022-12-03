@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+echo "---------------------"
+echo "> PDF files:"
+echo "---------------------"
+pdfgrep -in "$1" *.pdf
+
+echo "---------------------"
+echo "> EXCEL .xls and .xlsx files:"
+echo "---------------------"
+xlsxgrep -HNc "(?i)$1" *.xls*
+
+echo "---------------------"
+echo "> Word .doc files:"
+echo "---------------------"
+find -iname "*.doc" |xargs -I {} bash -c "if (antiword {}|grep -i '${1}'); then echo {} ; fi"
+
+echo "---------------------"
+echo "> Word .docx files:"
+echo "---------------------"
+rga -i "$1" *.docx
+echo "---------------------"
