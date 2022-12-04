@@ -1,22 +1,90 @@
 #!/usr/bin/env bash
 
-echo "---------------------"
-echo "> PDF files:"
-echo "---------------------"
-pdfgrep -in "$1" *.pdf
+rga-fzf() {
+  RG_PREFIX="rga --files-with-matches"
+  local file
+  file="$(
+    FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
+      fzf --sort --preview="[[ ! -z {} ]] && rga --pretty --context 5 {q} {}" \
+        --phony -q "$1" \
+        --bind "change:reload:$RG_PREFIX {q}" \
+        --preview-window="70%:wrap"
+  )"
+}
 
-echo "---------------------"
-echo "> EXCEL .xls and .xlsx files:"
-echo "---------------------"
-xlsxgrep -HNc "(?i)$1" *.xls*
+rga-fzf-e() {
+  RG_PREFIX="xlsxgrep -HN"
+  local file
+  file="$(
+    FZF_DEFAULT_COMMAND="$RG_PREFIX '$1' *" \
+      fzf --sort --preview="[[ ! -z {} ]] && xlsxgrep {q} {}" \
+      --phony -q "(?i)$1" \
+        --bind "change:reload:$RG_PREFIX {q} *" \
+        --preview-window="70%:wrap"
+  )" &&
+  file2="$(echo $file | cut -d: -f1)" 
+  echo "opening $file2"
+  xdg-open "$file2"
+}
 
-echo "---------------------"
-echo "> Word .doc files:"
-echo "---------------------"
-find -iname "*.doc" |xargs -I {} bash -c "if (antiword {}|grep -i '${1}'); then echo {} ; fi"
+rga-fzf-2() {
+  RG_PREFIX="rga --files-with-matches"
+  local file
+  file="$(
+    FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
+      fzf --sort --preview="[[ ! -z {} ]] && rga --pretty --context 5 {q} {}" \
+        --phony -q "$1" \
+        --bind "change:reload:$RG_PREFIX {q}" \
+        --preview-window="70%:wrap"
+  )" &&
+  echo "opening $file" &&
+  xdg-open "$file"
+}
 
-echo "---------------------"
-echo "> Word .docx files:"
-echo "---------------------"
-rga -i "$1" *.docx
-echo "---------------------"
+# echo -e "> files: \n ---------------------"
+
+if [[ $1 -eq 1 ]]; then
+  pdfgrep -in "$2" *.pdf | cut -d: -f1 | uniq
+  xlsxgrep -HNc "(?i)$2" *.xls* | head -n -1 | cut -d: -f1 | uniq
+  find -iname "*.doc" | xargs -I {} bash -c "if (antiword {}|grep -i '${2}') > /dev/null 2>&1; then echo {} ; fi" | uniq
+  rga -ic "$2" *.docx | cut -d: -f1 | uniq
+elif [[ $1 -eq 2 ]]; then
+  echo -e "--------------------- \n > PDF files: \n---------------------"
+  pdfgrep -in "$2" *.pdf
+  echo -e "--------------------- \n > EXCEL .xls and .xlsx files: \n---------------------"
+  xlsxgrep -HNc "(?i)$2" *.xls* | head -n -1
+  echo -e "--------------------- \n > Word .doc files: \n---------------------"
+  find -iname "*.doc" |xargs -I {} bash -c "if (antiword {}|grep -i '${2}'); then echo {} ; fi"
+  echo -e "--------------------- \n > Word .docx files: \n---------------------"
+  rga -i "$2" *.docx
+  echo "---------------------"
+elif [[ $1 -eq 3 ]]; then
+  pdfgrep -in "$2" *.pdf | cut -d: -f1 | uniq >> res.txt
+  xlsxgrep -HNc "(?i)$2" *.xls* | head -n -1 | cut -d: -f1 | uniq >> res.txt
+  find -iname "*.doc" | xargs -I {} bash -c "if (antiword {}|grep -i '${2}') > /dev/null 2>&1; then echo {} ; fi" | uniq >> res.txt
+  rga -ic "$2" *.docx | cut -d: -f1 | uniq >> res.txt
+  cat res.txt
+  cat res.txt | while read line
+  do
+  xdg-open "$line" > /dev/null 2>&1
+  done
+  rm res.txt
+elif [[ $1 -eq 4 ]]; then
+  rga-fzf-2 "$2"
+elif [[ $1 -eq 5 ]]; then
+  xlsxgrep -HN "(?i)sanchez *.* adi" *.xls* | fzf | cut -d: -f1 >> res.txt 
+  cat res.txt
+  cat res.txt | while read line
+  do
+  xdg-open "$line" > /dev/null 2>&1
+  done
+  rm res.txt
+elif [[ $1 -eq 6 ]]; then
+  rga-fzf-e "$2"
+elif [[ $1 == h ]]; then
+  echo -e "Options:\n 1: List\n 2: List detailed\n 3: List and open\n 4: Open single file(pdf, docx)\n 5: Open Excel file(No RegEx)\n 6: Open Excel file\n Empty: Search"
+elif [[ -z $1 ]]; then
+  rga-fzf
+else
+  echo "Syntax error: search [Option] [Patern]"
+fi
