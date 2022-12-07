@@ -19,19 +19,15 @@ rga-fzf-excel() {
   local file
   file="$(
     FZF_DEFAULT_COMMAND="$RG_PREFIX '$1' *" \
-      fzf --sort --preview="[[ ! -z {} ]] && xlsxgrep {q} {}" \
-      --phony -q "(?i)$1" \
+      fzf \
+        --sort --preview="[[ ! -z {} ]] && xlsxgrep {q} {}" \
+        --phony -q "(?i)$1" \
         --bind "change:reload:$RG_PREFIX {q} *" \
         --preview-window="70%:wrap"
   )" &&
-  # file2="$(echo $file | cut -d: -f1)" 
-  echo $file | cut -d: -f1 >> res.txt
-  cat res.txt
-  cat res.txt | while read line
-  do
-  exec xdg-open "$line"
-  done
-  rm res.txt
+  file="$(echo $file | cut -d: -f1)" 
+  echo file
+  xdg-open "$file" > /dev/null 2>&1
 }
 
 rga-fzf-2() {
@@ -48,13 +44,12 @@ rga-fzf-2() {
   xdg-open "$file"
 }
 
-# echo -e "> files: \n ---------------------"
-
 if [[ $1 -eq 1 ]]; then
   pdfgrep -in "$2" *.pdf | cut -d: -f1 | uniq
   xlsxgrep -HNc "(?i)$2" *.xls* | head -n -1 | cut -d: -f1 | uniq
   find -iname "*.doc" | xargs -I {} bash -c "if (antiword {}|grep -i '${2}') > /dev/null 2>&1; then echo {} ; fi" | uniq
   rga -ic "$2" *.docx | cut -d: -f1 | uniq
+
 elif [[ $1 -eq 2 ]]; then
   echo -e "--------------------- \n > PDF files: \n---------------------"
   pdfgrep -in "$2" *.pdf
@@ -65,6 +60,7 @@ elif [[ $1 -eq 2 ]]; then
   echo -e "--------------------- \n > Word .docx files: \n---------------------"
   rga -i "$2" *.docx
   echo "---------------------"
+
 elif [[ $1 -eq 3 ]]; then
   pdfgrep -in "$2" *.pdf | cut -d: -f1 | uniq >> res.txt
   xlsxgrep -HNc "(?i)$2" *.xls* | head -n -1 | cut -d: -f1 | uniq >> res.txt
@@ -76,22 +72,28 @@ elif [[ $1 -eq 3 ]]; then
   xdg-open "$line" > /dev/null 2>&1
   done
   rm res.txt
+
 elif [[ $1 -eq 4 ]]; then
   rga-fzf-2 "$2"
+
 elif [[ $1 -eq 5 ]]; then
-  xlsxgrep -HN "(?i)sanchez *.* adi" *.xls* | fzf | cut -d: -f1 >> res.txt 
+  xlsxgrep -HN "(?i)$2" *.xls* | fzf | cut -d: -f1 >> res.txt 
   cat res.txt
   cat res.txt | while read line
   do
   xdg-open "$line" > /dev/null 2>&1
   done
   rm res.txt
+
 elif [[ $1 -eq 6 ]]; then
   rga-fzf-excel "$2"
+
 elif [[ $1 == h ]]; then
   echo -e "Options:\n 1: List\n 2: List detailed\n 3: List and open\n 4: Open single file(pdf, docx)\n 5: Open Excel file(No RegEx)\n 6: Open Excel file\n Empty: Search"
+
 elif [[ -z $1 ]]; then
   rga-fzf
+
 else
-  echo "Syntax error: search [Option] [Patern]"
+  echo "Syntax error: search [Option] [Patern], use search h to see more info."
 fi
