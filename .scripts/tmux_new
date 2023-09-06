@@ -1,10 +1,10 @@
 #!/bin/sh
-FOLDER=$(basename $(pwd))
-tmux new-session -d -s $FOLDER -n wiki
-tmux send-keys -t $FOLDER 'nvim' C-m
-tmux send-keys -t $FOLDER 'wt'
-tmux send-keys -t $FOLDER 'mhk'
-tmux send-keys -t $FOLDER ':w' C-m
-tmux new-window -t $FOLDER:1 -n term
-tmux attach-session -t $FOLDER
-tmux attach -t $FOLDER
+FOLDER=$(basename "$PWD")
+tmux new-session -d -s "$FOLDER" -n wiki
+tmux send-keys -t "$FOLDER" 'nvim' C-m
+tmux send-keys -t "$FOLDER" 'wt'
+tmux send-keys -t "$FOLDER" 'mhk'
+tmux send-keys -t "$FOLDER" ':w' C-m
+tmux new-window -t "$FOLDER":1 -n term
+tmux attach-session -t "$FOLDER"
+tmux attach -t "$FOLDER"

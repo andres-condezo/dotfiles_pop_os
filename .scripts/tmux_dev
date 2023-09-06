@@ -2,28 +2,28 @@
 
 ZOXIDE_RESULT=$(zoxide query -l | fzf --reverse)
 
-if [ -z "$ZOXIDE_RESULT" ]; then
-  echo "no result"
-  exit 0
+if [ "$ZOXIDE_RESULT" = "" ]; then
+	echo "no result"
+	exit 0
 fi
 
 FOLDER=$(basename "$ZOXIDE_RESULT")
 SESSION=$(tmux list-sessions | grep "$FOLDER" | awk '{print $1}' | sed 's/://')
 
-if [ -z "$SESSION" ]; then
-  echo "session does not exist"
-  cd "$ZOXIDE_RESULT"
-  tmux new-session -d -s "$FOLDER" -n server
-  tmux new-window -t "$FOLDER:1" -n code
-  tmux send-keys -t "$FOLDER" 'nvim' C-m
-  tmux send-keys -t "$FOLDER" ' e'
-  tmux send-keys -t "$FOLDER" M-l
-  tmux new-window -t "$FOLDER:5" -n term
-  tmux switch-client -t "$FOLDER"
-  tmux select-window -t "$FOLDER:1"
-  tmux attach-session -t $FOLDER
-  tmux attach -t $FOLDER
+if [ "$SESSION" = "" ]; then
+	echo "session does not exist"
+	cd "$ZOXIDE_RESULT" || exit 0
+	tmux new-session -d -s "$FOLDER" -n server
+	tmux new-window -t "$FOLDER:1" -n code
+	tmux send-keys -t "$FOLDER" 'nvim' C-m
+	tmux send-keys -t "$FOLDER" ' e'
+	tmux send-keys -t "$FOLDER" M-l
+	tmux new-window -t "$FOLDER:5" -n term
+	tmux switch-client -t "$FOLDER"
+	tmux select-window -t "$FOLDER:1"
+	tmux attach-session -t "$FOLDER"
+	tmux attach -t "$FOLDER"
 else
-  echo "session exists"
-  tmux switch-client -t "$SESSION"
+	echo "session exists"
+	tmux switch-client -t "$SESSION"
 fi
