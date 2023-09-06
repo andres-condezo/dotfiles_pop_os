@@ -9,7 +9,6 @@ if [ -z "$TMUX" ]; then
   fi
 
   FOLDER=$(basename $ZOXIDE_RESULT)
-  # lookup tmux session name
   SESSION=$(tmux list-sessions | grep $FOLDER | awk '{print $1}')
   SESSION=${SESSION%:}
   echo $SESSION
@@ -19,8 +18,12 @@ if [ -z "$TMUX" ]; then
     cd $ZOXIDE_RESULT
     tmux new-session -d -s $FOLDER -n server
     tmux new-window -t $FOLDER:1 -n code
+    tmux send-keys -t $FOLDER 'nvim' C-m
+    tmux send-keys -t $FOLDER ' e'
+    tmux send-keys -t $FOLDER M-l
     tmux new-window -t $FOLDER:5 -n term
     tmux switch-client -t $FOLDER
+    tmux select-window -t $FOLDER:1
     tmux attach-session -t $FOLDER
     tmux attach -t $FOLDER
   else
@@ -44,8 +47,12 @@ else
     cd $ZOXIDE_RESULT
     tmux new-session -d -s $FOLDER -n server
     tmux new-window -t $FOLDER:1 -n code
+    tmux send-keys -t $FOLDER 'nvim' C-m
+    tmux send-keys -t $FOLDER ' e'
+    tmux send-keys -t $FOLDER M-l
     tmux new-window -t $FOLDER:5 -n term
     tmux switch-client -t $FOLDER
+    tmux select-window -t $FOLDER:1
   else
     echo "session exists"
     tmux switch-client -t $SESSION
