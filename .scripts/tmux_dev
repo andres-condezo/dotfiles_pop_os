@@ -1,60 +1,29 @@
 #!/bin/sh
 
-if [ -z "$TMUX" ]; then
-  echo  "is not tmux"
-  ZOXIDE_RESULT=$(zoxide query -l | fzf --reverse)
-  if [ -z "$ZOXIDE_RESULT" ]; then
-    echo "no result"
-    exit 0
-  fi
+ZOXIDE_RESULT=$(zoxide query -l | fzf --reverse)
 
-  FOLDER=$(basename $ZOXIDE_RESULT)
-  SESSION=$(tmux list-sessions | grep $FOLDER | awk '{print $1}')
-  SESSION=${SESSION%:}
-  echo $SESSION
+if [ -z "$ZOXIDE_RESULT" ]; then
+  echo "no result"
+  exit 0
+fi
 
-  if [ -z "$SESSION" ]; then
-    echo "session does not exist"
-    cd $ZOXIDE_RESULT
-    tmux new-session -d -s $FOLDER -n server
-    tmux new-window -t $FOLDER:1 -n code
-    tmux send-keys -t $FOLDER 'nvim' C-m
-    tmux send-keys -t $FOLDER ' e'
-    tmux send-keys -t $FOLDER M-l
-    tmux new-window -t $FOLDER:5 -n term
-    tmux switch-client -t $FOLDER
-    tmux select-window -t $FOLDER:1
-    tmux attach-session -t $FOLDER
-    tmux attach -t $FOLDER
-  else
-    echo "session exists"
-    tmux attach -t $SESSION
-  fi
+FOLDER=$(basename "$ZOXIDE_RESULT")
+SESSION=$(tmux list-sessions | grep "$FOLDER" | awk '{print $1}' | sed 's/://')
+
+if [ -z "$SESSION" ]; then
+  echo "session does not exist"
+  cd "$ZOXIDE_RESULT"
+  tmux new-session -d -s "$FOLDER" -n server
+  tmux new-window -t "$FOLDER:1" -n code
+  tmux send-keys -t "$FOLDER" 'nvim' C-m
+  tmux send-keys -t "$FOLDER" ' e'
+  tmux send-keys -t "$FOLDER" M-l
+  tmux new-window -t "$FOLDER:5" -n term
+  tmux switch-client -t "$FOLDER"
+  tmux select-window -t "$FOLDER:1"
+  tmux attach-session -t $FOLDER
+  tmux attach -t $FOLDER
 else
-  echo "is tmux"
-  ZOXIDE_RESULT=$(zoxide query -l | fzf --reverse)
-  if [ -z "$ZOXIDE_RESULT" ]; then
-    echo "no result"
-    exit 0
-  fi
-
-  FOLDER=$(basename $ZOXIDE_RESULT)
-  SESSION=$(tmux list-sessions | grep $FOLDER | awk '{print $1}')
-  SESSION=${SESSION%:}
-
-  if [ -z "$SESSION" ]; then
-    echo "session does not exist"
-    cd $ZOXIDE_RESULT
-    tmux new-session -d -s $FOLDER -n server
-    tmux new-window -t $FOLDER:1 -n code
-    tmux send-keys -t $FOLDER 'nvim' C-m
-    tmux send-keys -t $FOLDER ' e'
-    tmux send-keys -t $FOLDER M-l
-    tmux new-window -t $FOLDER:5 -n term
-    tmux switch-client -t $FOLDER
-    tmux select-window -t $FOLDER:1
-  else
-    echo "session exists"
-    tmux switch-client -t $SESSION
-  fi
+  echo "session exists"
+  tmux switch-client -t "$SESSION"
 fi
