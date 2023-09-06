@@ -31,17 +31,19 @@
   lf1 (tap-hold-next-release 300 i (layer-toggle lft1_qwerty_layer))
   lf2 (tap-hold-next-release 300 o (layer-toggle lft2_qwerty_layer))
   num (tap-hold-next-release 300 a (layer-toggle num_layer))
+  nu2 (tap-hold-next-release 300 r (layer-toggle num_layer))
   nav (tap-hold-next-release 200 spc (layer-toggle nav_layer))
   sym (tap-hold-next-release 300 n (layer-toggle sym_layer))
   sy2 (tap-hold-next-release 300 w (layer-toggle sym2_layer))
   fun (tap-hold-next-release 300 g (layer-toggle fun_layer))
-  tx1 (tap-hold-next-release 300 t (layer-toggle tx1_layer))
+  tx1 (tap-hold-next-release 300 t (layer-toggle temux_layer))
 
   ;; Modifiers
   lsf (tap-hold-next-release 300 f lsft)
   lct (tap-hold-next-release 300 c lctl)
   lal (tap-hold-next-release 300 v lalt)
   met (tap-hold-next-release 300 d lmet)
+  me2 (tap-hold-next-release 300 e lmet)
   rsf (tap-hold-next-release 300 ; rsft)
   rct (tap-hold-next-release 300 m rctl)
   ral (tap-hold-next-release 300 esc ralt)
@@ -54,20 +56,24 @@
   ;; Tmux
   tmx #(C-b)
   txw #(C-b w)
-  tpn #(C-b q)
   txr #(C-b r)
-  tnw #(C-b c)
-  txq #(C-b S-6)
-  txn #(C-b n)
-  txp #(C-b p)
-  tls #(C-b l)
-  cpm #(C-b RA-8)
+  txn #(C-b c)
+  tis #(C-b m)
+  txq #(C-b q)
+  tnw #(C-b n)
+  tpw #(C-b p)
+  tns #(C-b l)
+  tps #(C-b h)
+  ;; cpm #(C-b RA-8)
+
+  ;; Zoom screen
+  zoo #(A-lmet)
 )
 
 (deflayer init_layer
   caps f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
-  grv  1    2    3    4    5    6    7  ret  bspc 0    -    =    bspc  ins  home @qwe        nlck kp/  kp*  kp-
-  tab  q    @sy2 e    r    @tx1 y    u    @lf1 @lf2 p    [    ]    ret   del  end  pgdn        kp7  kp8  kp9  kp+
+  grv  1    2    3    4    5    6    @zoo 8    9    0    -    =    bspc  ins  home @qwe        nlck kp/  kp*  kp-
+  tab  q    @sy2 @me2 @nu2 @tx1 y    u    @lf1 @lf2 p    [    ]    ret   del  end  pgdn        kp7  kp8  kp9  kp+
   esc  @num s    @met @lsf @fun h    j    k    l    @rsf '    \                                kp4  kp5  kp6
   lsft 102d z    x    @lct @lal b   @sym @rct  ,    .    /    rsft            up               kp1  kp2  kp3  kprt
   lctl lmet lalt           @nav                @ral rmet cmp  rctl       left down rght        kp0       kp.
@@ -103,8 +109,8 @@
 (deflayer num_layer
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
   grv  1    2    3    4    5    6    /    *    9    0    -    =    bspc  ins  home pgup        nlck kp/  kp*  kp-
-  tab  @tpn w    e    r    @tmx y    7    8    9    p    [    ]    ret   del  end  pgdn        kp7  kp8  kp9  kp+
-  caps a    s    @met lsft g    h    4    5    6    ;    '    \                                kp4  kp5  kp6
+  tab  q    w    @me2 @nu2 @tmx y    7    8    9    p    [    ]    ret   del  end  pgdn        kp7  kp8  kp9  kp+
+  caps a    s    @met @lsf g    h    4    5    6    ;    '    \                                kp4  kp5  kp6
   lsft 102d z    x    lctl lalt    b    0    1    2    3    0    rsft            up               kp1  kp2  kp3  kprt
   lctl lmet lalt           spc                 ralt rmet cmp  rctl       left down rght        kp0       kp.
 )
@@ -148,11 +154,11 @@
   lctl lmet lalt           spc                   ralt rmet cmp  rctl       left down rght        kp0       kp.
 )
 
-(deflayer tx1_layer
+(deflayer temux_layer
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup        nlck kp/  kp*  kp-
-  tab  @txq @txw e    @txr t    y    u    i    o    p    [    ]    ret   del  end  pgdn        kp7  kp8  kp9  kp+
-  caps a    @cpm d    f    g    h    @txp @txn @tls ;    '    \                                kp4  kp5  kp6
-  lsft 102d z    x    c    v    b    @tnw m    ,    .    /    rsft            up               kp1  kp2  kp3  kprt
+  tab  @txq @txw e    @txr t    y    i    u    o    p    [    ]    ret   del  end  pgdn        kp7  kp8  kp9  kp+
+  caps a    s    d    @lsf g    @tps @tpw @tnw @tns ;    '    \                                kp4  kp5  kp6
+  lsft 102d z    x    c    v    b    @txn @tis ,    .    /    rsft            up               kp1  kp2  kp3  kprt
   lctl lmet lalt           spc                 ralt rmet cmp  rctl       left down rght        kp0       kp.
 )
