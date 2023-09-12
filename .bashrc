@@ -121,15 +121,15 @@ fi
 
 [ -f ~/.ff.bash ] && source ~/.fzf.bash
 
-export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
-export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
-export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
-export PATH="$HOME/.rbenv/bin:$PATH"
+# export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+# export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
+# export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
+# export PATH="$HOME/.rbenv/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export PATH=$PATH:$HOME/linuxbrew/.linuxbrew/bin/nvim/
-alias fix-opera='sudo ~root/.scripts/fix-opera.sh' # Opera fix HTML5 media
-alias fix-opera='sudo ~root/.scripts/fix-opera.sh' # Opera fix HTML5 media
+# export PATH=$PATH:$HOME/linuxbrew/.linuxbrew/bin/nvim/
+# alias fix-opera='sudo ~root/.scripts/fix-opera.sh' # Opera fix HTML5 media
+# alias fix-opera='sudo ~root/.scripts/fix-opera.sh' # Opera fix HTML5 media
