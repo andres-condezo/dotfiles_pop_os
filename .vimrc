@@ -308,7 +308,6 @@ command! -bang -nargs=* GGrep
 
 "------------------------------
 "------------------------------ NEOSNIPPETS
-
 " if has('nvim')
 "   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " else

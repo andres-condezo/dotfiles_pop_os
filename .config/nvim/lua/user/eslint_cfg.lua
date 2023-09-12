@@ -1,10 +1,10 @@
-local null_ls = require("null-ls")
+-- local null_ls = require("null-ls")
 local eslint = require("eslint")
 
-null_ls.setup()
+-- null_ls.setup()
 
 eslint.setup({
-  bin = 'eslint', -- or `eslint_d`
+  bin = 'eslint_d', --  eslint or `eslint_d`
   code_actions = {
     enable = true,
     apply_on_save = {

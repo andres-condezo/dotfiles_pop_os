@@ -14,7 +14,7 @@ Hydra({
          vim.cmd "colorscheme material"
       end,
       on_exit = function()
-         vim.cmd "colorscheme darkplus"
+         vim.cmd "colorscheme codedark"
          vim.cmd 'echo' -- clear the echo area
       end
    },

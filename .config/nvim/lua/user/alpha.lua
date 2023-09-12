@@ -12,16 +12,24 @@ local config_dir = fn.stdpath('config')
 -- │ Header                                                   │
 -- ╰──────────────────────────────────────────────────────────╯
 
-local header = {
-  [[                                                 ]],
-  [[███    ██ ███████  ██████  ██    ██ ██ ███    ███]],
-  [[████   ██ ██      ██    ██ ██    ██ ██ ████  ████]],
-  [[██ ██  ██ █████   ██    ██ ██    ██ ██ ██ ████ ██]],
-  [[██  ██ ██ ██      ██    ██  ██  ██  ██ ██  ██  ██]],
-  [[██   ████ ███████  ██████    ████   ██ ██      ██]],
-  [[                                                 ]],
-}
+-- local header = {
+--   [[                                                 ]],
+--   [[███    ██ ███████  ██████  ██    ██ ██ ███    ███]],
+--   [[████   ██ ██      ██    ██ ██    ██ ██ ████  ████]],
+--   [[██ ██  ██ █████   ██    ██ ██    ██ ██ ██ ████ ██]],
+--   [[██  ██ ██ ██      ██    ██  ██  ██  ██ ██  ██  ██]],
+--   [[██   ████ ███████  ██████    ████   ██ ██      ██]],
+--   [[                                                 ]],
+-- }
 
+local header = {
+  [[                                 ]],
+  [[███    ██  ██    ██ ██ ███    ███]],
+  [[████   ██  ██    ██ ██ ████  ████]],
+  [[██  ██ ██   ██  ██  ██ ██  ██  ██]],
+  [[██   ████    ████   ██ ██      ██]],
+  [[                                 ]],
+}
 dashboard.section.header.type = "text";
 dashboard.section.header.val = header;
 dashboard.section.header.opts = {
@@ -66,8 +74,8 @@ dashboard.section.buttons.val = {
   -- dashboard.button("t", " " .. " Find text", ":Telescope live_grep <CR>"),
   dashboard.button("s", " " .. " Find session", ":SessionManager load_session<CR>"),
   dashboard.button("d", " " .. " Database", ":colorscheme kanagawa | :tab DBUI<cr>"),
-  dashboard.button("w", " " .. " Wiki UI Select", ":VimwikiUISelec<CR>"),
-  dashboard.button("c", " " .. " Config", ":e ~/.config/nvim/init.lua <CR>"),
+  dashboard.button("K", " " .. " Wiki UI Select", ":VimwikiUISelec<CR>"),
+  -- dashboard.button("c", " " .. " Config", ":e ~/.config/nvim/init.lua <CR>"),
   dashboard.button("q", " " .. " Quit", ":qa<CR>"),
 }
 
@@ -92,8 +100,7 @@ end
 
 local function footer()
   local v = vim.version()
-  local anvim_version = line_from(config_dir .. "/.anvim.version")
-  return string.format(" v%d.%d.%d   adrs nvim %s ", v.major, v.minor, v.patch, anvim_version[1])
+  return string.format(" v%d.%d.%d", v.major, v.minor, v.patch)
 end
 
 dashboard.section.footer.val = {
@@ -113,17 +120,17 @@ local section = {
 
 local opts = {
   layout = {
-    {type = "padding", val = 5},
-    section.header,
-    {type = "padding", val = 1},
-    section.hi_top_section,
     {type = "padding", val = 2},
+    section.header,
+    {type = "padding", val = 0},
+    section.hi_top_section,
+    {type = "padding", val = 0},
     section.buttons,
-    {type = "padding", val = 5},
+    {type = "padding", val = 2},
     section.footer,
   },
   opts = {
-    margin = 5
+    margin = 0
   },
 }
 
@@ -155,3 +162,4 @@ vim.api.nvim_create_autocmd("FileType", {
     })
   end,
 })
+

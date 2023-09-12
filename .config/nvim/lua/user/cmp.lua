@@ -8,13 +8,6 @@ if not snip_status_ok then
 	return
 end
 
-local ok, lspkind = pcall(require, "lspkind")
-if not ok then
-  return
-end
-
-lspkind.init()
-
 require("luasnip/loaders/from_vscode").lazy_load()
 
 local check_backspace = function()
@@ -22,40 +15,55 @@ local check_backspace = function()
 	return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
 end
 
-vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
-vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { fg = "#CA42F0" })
-vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = "#FDE030" })
-vim.api.nvim_set_hl(0, "CmpItemKindCrate", { fg = "#F64D00" })
+local kind_icons = {
+	Text = "",
+	Method = "",
+	Function = "",
+	Constructor = "",
+	Field = "",
+	Variable = "",
+	Class = "",
+	Interface = "",
+	Module = "",
+	Property = "",
+	Unit = "",
+	Value = "",
+	Enum = "",
+	Keyword = "",
+	Snippet = "",
+	Color = "",
+	File = "",
+	Reference = "",
+	Folder = "",
+	EnumMember = "",
+	Constant = "",
+	Struct = "",
+	Event = "",
+	Operator = "",
+	TypeParameter = "",
+}
 
 cmp.setup({
 	snippet = {
 		expand = function(args)
 			luasnip.lsp_expand(args.body) -- For `luasnip` users.
-			-- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-			-- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-      -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
 		end,
 	},
 
 	mapping = cmp.mapping.preset.insert({
-		["<C-k>"] = cmp.mapping.select_prev_item(),
-		["<C-j>"] = cmp.mapping.select_next_item(),
+		-- ["<C-k>"] = cmp.mapping.select_prev_item(),
+		-- ["<C-j>"] = cmp.mapping.select_next_item(),
 		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
 		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
-		["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-		["<A-e>"] = cmp.mapping({
-			i = cmp.mapping.abort(),
-			c = cmp.mapping.close(),
-		}),
-		["<A-o>"] = cmp.mapping({
+		-- ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+		["<C-Space>"] = cmp.mapping({
 			i = cmp.mapping.abort(),
 			c = cmp.mapping.close(),
 		}),
 		-- Accept currently selected item. If none selected, `select` first item.
 		-- Set `select` to `false` to only confirm explicitly selected items.
 		["<CR>"] = cmp.mapping.confirm({ select = true }),
-		["<A-y>"] = cmp.mapping.confirm({ select = true }),
-		["<Tab>"] = cmp.mapping(function(fallback)
+		["<Down>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
 			elseif luasnip.expandable() then
@@ -84,11 +92,11 @@ cmp.setup({
 			"s",
 		}),
 	}),
-
-  formatting = {
-    format = lspkind.cmp_format {
-      with_text = true,
-      menu = {
+	formatting = {
+		fields = { "kind", "abbr", "menu" },
+		format = function(entry, vim_item)
+			vim_item.kind = kind_icons[vim_item.kind]
+			vim_item.menu = ({
         luasnip = "[LuaSnip]",
         ultisnips = "[UltiSnip]",
         buffer = "[Buf]",
@@ -98,42 +106,11 @@ cmp.setup({
         path = "[Path]",
 				emoji = "[emoji]",
 				npm = "[npm]",
-      },
-    },
-  },
-
+			})[entry.source.name]
+			return vim_item
+		end,
+	},
 	sources = {
-		{
-      name = "copilot",
-      -- keyword_length = 0,
-      max_item_count = 3,
-      trigger_characters = {
-        {
-          ".",
-          ":",
-          "(",
-          "'",
-          '"',
-          "[",
-          ",",
-          "#",
-          "*",
-          "@",
-          "|",
-          "=",
-          "-",
-          "{",
-          "/",
-          "\\",
-          "+",
-          "?",
-          " ",
-          -- "\t",
-          -- "\n",
-        },
-      },
-      group_index = 2,
-    },
 		{ name = "luasnip" },
 		{ name = 'ultisnips' }, -- For ultisnips users.
 		{ name = "nvim_lsp" },
@@ -149,19 +126,12 @@ cmp.setup({
 		select = false,
 	},
 	window = {
-		-- completion = cmp.config.window.bordered(),
-		-- documentation = cmp.config.window.bordered(),
-
-		winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
-		col_offset = -3,
-		side_padding = 100,
+		completion = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered(),
 	},
 	experimental = {
-		ghost_text = true,
+		ghost_text = false,
 	},
-	-- view = {
-	-- 	entries = "native",
-	-- },
 })
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).

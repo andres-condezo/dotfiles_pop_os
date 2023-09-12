@@ -137,7 +137,7 @@ local mappings = {
 
   g = {
     name = "Git",
-    f = { "<cmd>:G<CR>", "Git state" },
+    f = { "<cmd>:topleft vertical Git<CR><cmd>vertical resize 45<CR>", "Git state" },
     g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
     j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
     k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
@@ -172,7 +172,7 @@ local mappings = {
     },
     f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
     i = { "<cmd>LspInfo<cr>", "Info" },
-    I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
+    I = { "<cmd>Mason<cr>", "Mason Installer Info" },
     j = {
       "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
       "Next Diagnostic",
@@ -212,14 +212,15 @@ local mappings = {
     name = "Search",
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
     c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
+    C = { "<cmd>Telescope commands<cr>", "Commands" },
     h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
     H = { "<cmd>Telescope command_history<cr>", "Command history" },
+    k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
     M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
     p = { "<cmd>Telescope projects<cr>", "Projects" },
     r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
     R = { "<cmd>Telescope registers<cr>", "Registers" },
-    k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
-    C = { "<cmd>Telescope commands<cr>", "Commands" },
+    t = { "<cmd>TodoTelescope<cr>", "Todos" },
   },
 
   t = {
@@ -237,7 +238,7 @@ local mappings = {
     name = "Save",
     a = { "<cmd>wa | :qa<CR>", "Save all buffer and exit" },
     e = { "<cmd>wq<CR>", "Save current buffer and close it" },
-    s = { "<cmd>execute ':silent w !sudo tee % > /dev/null' | :edit!<CR>", "Save with sudo permission" },
+    s = { "<cmd>execute 'silent! :w !sudo tee % > /dev/null' | edit!<CR>", "Save with sudo permission" },
     w = { "<cmd>w!<CR>", "Save current buffer" },
   },
 
@@ -328,12 +329,13 @@ local more_v_mappings = {
 local w_mappings = {
   ["d"] = { "<Plug>VimwikiDeleteFile", "Delete file" },
   ["k"] = { "<Plug>VimwikiIndex", "VimWiki index" },
-  ["i"] = { "<Plug>VimwikiDiaryIndex", "VimWiki Diary index" },
+  ["i"] = { "<Plug>VimwikiDiaryIndex", "VimWiki diary index" },
   ["t"] = { "<Plug>VimwikiMakeDiaryNote", "Today's diary" },
   ["y"] = { "<Plug>VimwikiMakeYesterdayDiaryNote", "Yesterday's diary" },
   ["m"] = { "<Plug>VimwikiMakeTomorrowDiaryNote", "Tomorrow's diary" },
   ["u"] = { "<Plug>VimwikiDiaryGenerateLinks", "Wiki UI Select" },
   ["x"] = { "<cmd>VimwikiUISelec<CR>", "Wiki UI Select" },
+  ["n"] = { "<Plug>VimwikiNextLink" }
 }
 
 which_key.setup(setup)

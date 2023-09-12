@@ -14,14 +14,6 @@ require('material').setup({
 		popup_menu = true, -- Enable lighter background for the popup menu
 	},
 
-	italics = {
-		comments = false, -- Enable italic comments
-		keywords = false, -- Enable italic keywords
-		functions = false, -- Enable italic functions
-		strings = false, -- Enable italic strings
-		variables = false -- Enable italic variables
-	},
-
 	contrast_filetypes = { -- Specify which filetypes get the contrasted (darker) background
 		"terminal", -- Darker terminal background
 		"packer", -- Darker packer background

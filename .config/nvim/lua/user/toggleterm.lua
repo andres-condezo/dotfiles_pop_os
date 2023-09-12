@@ -38,4 +38,3 @@ function _LAZYGIT_TOGGLE()
 	lazygit:toggle()
 end
 
-

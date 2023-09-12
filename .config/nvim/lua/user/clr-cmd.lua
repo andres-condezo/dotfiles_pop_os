@@ -24,7 +24,7 @@ _G.clear_redo = function()
 end
 
 -- Clear messages
-vim.keymap.set("n", "<leader>ñ", function() print(" ") end)
+-- vim.keymap.set("n", "<leader>ñ", function() print(" ") end)
 
 -- redo and undo
 keymap("n", "<C-r>", ":lua clear_redo()<CR>", opts)

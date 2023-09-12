@@ -25,10 +25,14 @@ keymap("n", "<A-k>", "<C-w>k", opts)
 keymap("n", "<A-l>", "<C-w>l", opts)
 
 keymap("n", "<C-j>", "J", opts)
-keymap("n", "<C-A-k>", "K", opts)
+keymap("n", "<C-k>", "K", opts)
+
+-- keymap("n", "<C-A-k>", "K", opts)
 
 keymap("n", "J", "}", opts)
 keymap("n", "K", "{", opts)
+keymap("v", "J", "}", opts)
+keymap("v", "K", "{", opts)
 
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
@@ -60,8 +64,8 @@ keymap("n", "N", 'Nzz', opts)
 -- Visual Block --
 
 -- Move text up and down
-keymap("v", "<C-A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("v", "<C-A-k>", ":move '<-2<CR>gv-gv", opts)
+keymap("v", "<C-A-j>", ":move '>+1<CR>gv-gv", opts)
 
 -- Plugins --
 
@@ -83,7 +87,10 @@ keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
 keymap("n", "<A-r>", ":Reload<CR>", opts)
 
 -- comand line
--- keymap('n', ',', '<cmd>FineCmdline<CR>', opts)
+keymap('n', ',', '<cmd>FineCmdline<CR>', opts)
 
+-- keymap('n', 'mmw', 'lua telescope_vimwiki_categories_picker()<CR>', opts)
 
-keymap('n', 'mmw', 'lua telescope_vimwiki_categories_picker()<CR>', opts)
+keymap("n", "ñd", ":set background=dark<CR> | :source ~/.config/nvim/lua/user/lualine-t_cfg.lua<CR>", opts)
+keymap("n", "ñl", ":set background=light<CR> | :source ~/.config/nvim/lua/user/lualine-t.lua<CR>", opts)
+-- keymap("n", "ññ", ":colorscheme kanagawa<CR> | :set background=light<CR>", opts)

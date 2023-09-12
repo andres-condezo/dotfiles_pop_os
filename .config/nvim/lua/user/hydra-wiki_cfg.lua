@@ -14,7 +14,7 @@ Hydra({
          vim.cmd "colorscheme everforest"
       end,
       on_exit = function()
-         vim.cmd "colorscheme darkplus"
+         vim.cmd "colorscheme onedark"
          vim.cmd 'echo' -- clear the echo area
       end
    },
@@ -62,6 +62,8 @@ vim.cmd [[
 
    let g:vimwiki_list = [personal_wiki, tech_wiki, shopping_wiki]
    let g:vimwiki_markdown_link_ext = 1
+
+   let g:vimwiki_listsyms = ' ○◐●✗'
 ]]
 
 require('telescope').load_extension('vimwiki')
