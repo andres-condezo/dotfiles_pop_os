@@ -82,7 +82,6 @@ alias cli="xclip"
 alias pcli="xclip -out"
 alias cpwd="pwd | tr -d '\n' | xclip && echo 'pwd copied to clipboard'"
 alias open="xdg-open"
-alias gdf='/usr/bin/git --git-dir=/home/adrs/dotfilesManjaro --work-tree=/home/adrs'
 # alias treel='ls-tree -r dev --name-only'
 alias micro='cd ~/Documents/microverse/'
 alias cursos='cd ~/Documents/cursos'
@@ -94,12 +93,10 @@ alias lst='exa --long --icons -a -s=created -r --group-directories-first'
 alias ls='exa --icons -s=created -r --group-directories-first'
 alias gsts='gst -s'
 alias tree='exa --tree --group-directories-first --level=1 --icons'
-alias ecom='cd ~/Documents/Freelance/ecommerce/ecommerce'
 alias pwdf='echo '-------------' && pwd && echo '-------------' && ls'
 alias dnv='docker start -i mynginx2'
-alias keysoup='sudo systemctl restart keyd'
 alias kmd='sudo /etc/sv/kmonad/run'
-alias dvm='cd /home/adrs/Documents/development'
+alias dvm='cd /home/$USER/Documents/development'
 alias fd='fdfind'
 alias dv='fd --type f --hidden --exclude .git | fzf-tmux -p --reverse | xargs nvim'
 alias rvim='sudo vim -u ~/.rvimrc'
@@ -206,9 +203,9 @@ bindkey '^e' edit-command-line
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
 export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
-export PATH="/home/adrs/.local/bin:$PATH"
-export PATH="/home/adrs/.cargo/bin:$PATH"
-export PATH=$PATH:'/home/adrs/Documents/dotfiles_pop_os/.scripts/'
+export PATH="/home/$USER/.local/bin:$PATH"
+export PATH="/home/$USER/.cargo/bin:$PATH"
+export PATH=$PATH:"/home/$USER/Documents/dotfiles_pop_os/.scripts/"
 
 #-------------------
 #-------------------VERSION MANAGERS 
