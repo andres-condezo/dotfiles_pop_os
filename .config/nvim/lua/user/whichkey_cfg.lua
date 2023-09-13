@@ -121,7 +121,7 @@ local mappings = {
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
   ["f"] = {
-    "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{hidden = true})<cr>",
+    "<cmd>lua require('telescope.builtin').find_files({layout_strategy='horizontal',layout_config={width=0.9}})<cr>",
     "Find files" },
   ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
   ["o"] = { "<cmd>BufCurOnly<cr>", "Close all buffers except Current one" },
