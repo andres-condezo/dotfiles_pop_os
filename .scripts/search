@@ -25,7 +25,7 @@ rga-fzf-excel() {
         --bind "change:reload:$RG_PREFIX {q} *" \
         --preview-window="70%:wrap"
   )" &&
-  file="$(echo $file | cut -d: -f1)" 
+  file="$(echo "$file" | cut -d: -f1)" 
   echo file
   xdg-open "$file" > /dev/null 2>&1
 }
@@ -65,7 +65,7 @@ elif [[ $1 -eq 3 ]]; then
   pdfgrep -in "$2" *.pdf | cut -d: -f1 | uniq >> res.txt
   xlsxgrep -HNc "(?i)$2" *.xls* | head -n -1 | cut -d: -f1 | uniq >> res.txt
   find -iname "*.doc" | xargs -I {} bash -c "if (antiword {}|grep -i '${2}') > /dev/null 2>&1; then echo {} ; fi" | uniq >> res.txt
-  rga -ic "$2" *.docx | cut -d: -f1 | uniq >> res.txt
+  rga -ic "$2" /*glob*.docx | cut -d: -f1 | uniq >> res.txt
   cat res.txt
   cat res.txt | while read line
   do
@@ -77,7 +77,7 @@ elif [[ $1 -eq 4 ]]; then
   rga-fzf-2 "$2"
 
 elif [[ $1 -eq 5 ]]; then
-  xlsxgrep -HN "(?i)$2" *.xls* | fzf | cut -d: -f1 >> res.txt 
+  xlsxgrep -HN "(?i)$2" /*glob*.xls* | fzf | cut -d: -f1 >> res.txt 
   cat res.txt
   cat res.txt | while read line
   do
@@ -89,7 +89,15 @@ elif [[ $1 -eq 6 ]]; then
   rga-fzf-excel "$2"
 
 elif [[ $1 == h ]]; then
-  echo -e "Options:\n 1: List\n 2: List detailed\n 3: List and open\n 4: Open single file(pdf, docx)\n 5: Open Excel file(No RegEx)\n 6: Open Excel file\n Empty: Search"
+  options="Options:"
+  options+="\n 1: List"
+  options+="\n 2: List detailed"
+  options+="\n 3: List and open"
+  options+="\n 4: Open single file(pdf, docx)"
+  options+="\n 5: Open Excel file(No RegEx)"
+  options+="\n 6: Open Excel file"
+  options+="\n Empty: Search"
+  echo -e "$options"
 
 elif [[ -z $1 ]]; then
   rga-fzf
