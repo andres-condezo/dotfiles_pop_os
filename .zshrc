@@ -210,7 +210,7 @@ export PATH=$PATH:"/home/$USER/Documents/dotfiles_pop_os/.scripts/"
 #-------------------
 #-------------------VERSION MANAGERS 
 # node version manager
-export PATH=~/.nvm/versions/node/v16.14.0/bin:$PATH
+export PATH=~/.nvm/versions/node/v16.20.2/bin:$PATH
 export NVM_DIR=~/.nvm
 [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh" --no-use
 # ruby version manager
@@ -220,11 +220,11 @@ eval "$(rbenv init -)"
 
 #-------------------
 #-------------------OTHERS 
-export FZF_DEFAULT_COMMAND="fdfind --exclude={.git,.sass-cache} --type f"
 export VISUAL=nvim;
 export EDITOR=nvim;
-LS_COLORS=$LS_COLORS:'tw=01;35:ow=01;35:' ; export LS_COLORS
+export FZF_DEFAULT_COMMAND="fdfind --exclude={.git,.sass-cache} --type f"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+LS_COLORS=$LS_COLORS:'tw=01;35:ow=01;35:' ; export LS_COLORS
 # xsetwacom set "Wacom Intuos S 2 Pen stylus" Button 2 "pan"
 # xsetwacom --set "Wacom Intuos S 2 Pen stylus" "PanScrollThreshold" 200
 #zoxide
