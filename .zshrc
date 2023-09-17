@@ -102,6 +102,11 @@ alias dv='fd --type f --hidden --exclude .git | fzf-tmux -p --reverse | xargs nv
 alias rvim='sudo vim -u ~/.rvimrc'
 alias svim='sudo -E vim'
 alias t='tmux_new'
+alias dotf='cd /home/$USER/Document/dotfiles_pop_os/' 
+# usb
+alias dvm2='/media/$USER/d9b427fd-dd9a-43f4-a718-52d7239d54d4/home/user02/Documents/development'
+alias dotf2='/media/$USER/d9b427fd-dd9a-43f4-a718-52d7239d54d4/home/user02/Documents/dotfiles_pop_os'
+alias user2='/media/$USER/d9b427fd-dd9a-43f4-a718-52d7239d54d4/home/user02/'
 
 #-------------------
 #------------------- FUNCTIONS
@@ -214,8 +219,8 @@ export PATH=~/.nvm/versions/node/v16.20.2/bin:$PATH
 export NVM_DIR=~/.nvm
 [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh" --no-use
 # ruby version manager
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+# export PATH="$HOME/.rbenv/bin:$PATH"
+# eval "$(rbenv init -)"
 # export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 
 #-------------------
