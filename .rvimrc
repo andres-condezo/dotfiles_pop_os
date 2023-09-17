@@ -41,9 +41,7 @@ set timeoutlen=500                      " By default timeout Len is 1000 ms
 set autochdir                           " Your working directory will always be the same as your working directory
 set hlsearch
 set incsearch
-" set undofile
-" set undodir=/home/adrsp/.vimundo/
-set clipboard=unnamedplus
+" set clipboard=unnamedplus
 set go+=a
 set whichwrap+=<,>,[,],h,l
 set listchars=eol:¬,tab:▷▷⋮,trail:~,extends:>,precedes:<,space:·
@@ -58,6 +56,16 @@ set wildmenu
 set wildmode=list,full
 set wildcharm=<C-Z>
 " set wildmode=longest,list,full
+
+" Let's save undo info!
+if !isdirectory($HOME."/.vim")
+    call mkdir($HOME."/.vim", "", 0770)
+endif
+if !isdirectory($HOME."/.vim/undo-dir")
+    call mkdir($HOME."/.vim/undo-dir", "", 0700)
+endif
+set undodir=~/.vim/undo-dir
+set undofile
 
 "--------------------------------
 "-------------------------------- MAPLEADER
@@ -139,12 +147,12 @@ nnoremap n nzz
 nnoremap N Nzz
 
 nnoremap U <C-r>
+nnoremap <leader>u :exec 'undo' undotree()['seq_last']<CR>
 
 command! Reload execute "source ~/.vimrc"
 nnoremap <C-r> :Reload<CR>
 
-nnoremap <Leader>sc :Colors<CR>
-" nnoremap <Leader>sh :History<CR>
+nnoremap <Leader>sc :colorscheme <C-z><C-z>
 
 nnoremap ms /
 nnoremap me :e .env<CR>
