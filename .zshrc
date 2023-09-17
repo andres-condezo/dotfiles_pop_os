@@ -102,7 +102,7 @@ alias dv='fd --type f --hidden --exclude .git | fzf-tmux -p --reverse | xargs nv
 alias rvim='sudo vim -u ~/.rvimrc'
 alias svim='sudo -E vim'
 alias t='tmux_new'
-alias dotf='cd /home/$USER/Document/dotfiles_pop_os/' 
+alias dotf='cd /home/$USER/Documents/dotfiles_pop_os/' 
 # USB
 alias dvm2='/media/$USER/d9b427fd-dd9a-43f4-a718-52d7239d54d4/home/user02/Documents/development'
 alias dotf2='/media/$USER/d9b427fd-dd9a-43f4-a718-52d7239d54d4/home/user02/Documents/dotfiles_pop_os'
