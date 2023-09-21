@@ -107,6 +107,15 @@ alias dotf='cd /home/$USER/Documents/dotfiles_pop_os/'
 alias dvm2='/media/$USER/d9b427fd-dd9a-43f4-a718-52d7239d54d4/home/user02/Documents/development'
 alias dotf2='/media/$USER/d9b427fd-dd9a-43f4-a718-52d7239d54d4/home/user02/Documents/dotfiles_pop_os'
 alias user2='/media/$USER/d9b427fd-dd9a-43f4-a718-52d7239d54d4/home/user02/'
+# Npm scripts
+alias ndev='npm run dev'
+alias nbuild='npm run start'
+alias nstart='npm run start'
+alias ntest='npm run test'
+alias nlint='npm run lint'
+alias nlint:fix='npm run lint:fix'
+alias nstyle='npm run styles'
+alias nstyle:fix='npm run styles:fix'
 
 #-------------------
 #------------------- FUNCTIONS
