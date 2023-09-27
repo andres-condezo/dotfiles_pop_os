@@ -109,7 +109,7 @@ alias dotf2='/media/$USER/d9b427fd-dd9a-43f4-a718-52d7239d54d4/home/user02/Docum
 alias user2='/media/$USER/d9b427fd-dd9a-43f4-a718-52d7239d54d4/home/user02/'
 # Npm scripts
 alias ndev='npm run dev'
-alias nbuild='npm run start'
+alias nbuild='npm run build'
 alias nstart='npm run start'
 alias ntest='npm run test'
 alias nlint='npm run lint'
