@@ -77,6 +77,7 @@ alias vimrc="vim ~/.vimrc"
 alias zrc="v ~/.zshrc"
 alias brc="v ~/.bashrc"
 alias trc="v ~/.tmux.conf"
+alias wrc="v ~/.config/wezterm/wezterm.lua"
 alias x=exit
 alias cli="xclip"
 alias pcli="xclip -out"
@@ -173,10 +174,6 @@ rngcd () {
 }
 bindkey -s '^f' 'rngcd\n'
 
-# Tmux
-bindkey -s '^s^s' 'tmux_session_xplorer\n'
-bindkey -s '^s^d' 'tmux_session_xplorer dev\n'
-
 # Codi
 # Usage: codi [filetype] [filename]
 codi() {
@@ -211,6 +208,10 @@ rga-fzf() {
 bindkey '\ey' autosuggest-accept
 # Edit line in vim with ctrl-e:
 bindkey '^e' edit-command-line
+# Tmux
+bindkey -s '^s^s' 'tmux_session_xplorer\n'
+bindkey -s '^s^d' 'tmux_session_xplorer dev\n'
+# bindkey -s '^T' 'nvim-mode\n'
 
 #-------------------
 #-------------------PATHS 
@@ -238,7 +239,7 @@ export VISUAL=nvim;
 export EDITOR=nvim;
 export FZF_DEFAULT_COMMAND="fdfind --exclude={.git,.sass-cache} --type f"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-LS_COLORS=$LS_COLORS:'tw=01;35:ow=01;35:' ; export LS_COLORS
+# LS_COLORS=$LS_COLORS:'tw=01;35:ow=01;35:' ; export LS_COLORS
 # xsetwacom set "Wacom Intuos S 2 Pen stylus" Button 2 "pan"
 # xsetwacom --set "Wacom Intuos S 2 Pen stylus" "PanScrollThreshold" 200
 #zoxide
