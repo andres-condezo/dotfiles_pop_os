@@ -40,7 +40,7 @@
   sym (tap-hold-next-release 300 n (layer-toggle sym_layer))
   sy2 (tap-hold-next-release 300 w (layer-toggle sym2_layer))
   fun (tap-hold-next-release 300 g (layer-toggle fun_layer))
-  tx1 (tap-hold-next-release 300 t (layer-toggle temux_layer))
+  tx1 (tap-hold-next-release 300 t (layer-toggle tmux_layer))
 
   ;; Modifiers
   lsf (tap-hold-next-release 300 f lsft)
@@ -68,7 +68,7 @@
   tpw #(C-b p)
   tns #(C-b l)
   tps #(C-b h)
-  ;; cpm #(C-b RA-8)
+  cpm #(C-b RA-8)
 
   ;; Zoom screen
   zoo #(A-lmet)
@@ -158,11 +158,11 @@
   lctl lmet lalt           spc                   ralt rmet cmp  rctl       left down rght        kp0       kp.
 )
 
-(deflayer temux_layer
+(deflayer tmux_layer
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup        nlck kp/  kp*  kp-
   tab  @txq @txw e    @txr t    y    i    u    o    p    [    ]    ret   del  end  pgdn        kp7  kp8  kp9  kp+
   caps a    s    d    @lsf g    @tps @tpw @tnw @tns ;    '    \                                kp4  kp5  kp6
-  lsft 102d z    x    c    v    b    @txn @tis ,    .    /    rsft            up               kp1  kp2  kp3  kprt
+  lsft 102d z    x    @cpm    v    b    @txn @tis ,    .    /    rsft            up               kp1  kp2  kp3  kprt
   lctl lmet lalt           spc                 ralt rmet cmp  rctl       left down rght        kp0       kp.
 )
