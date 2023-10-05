@@ -5,5 +5,5 @@ cdate=$(date +'%Y-%m-%d %H:%M:%S')
 
 cd "$file" || echo "ERROR" | exit
 git add "$file"
-git commit -m "Update $cdate"
+git commit -m "Feat: Update $cdate"
 git push origin main

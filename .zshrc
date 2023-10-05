@@ -117,6 +117,7 @@ alias nlint='npm run lint'
 alias nlint:fix='npm run lint:fix'
 alias nstyle='npm run styles'
 alias nstyle:fix='npm run styles:fix'
+alias cat='batcat'
 
 #-------------------
 #------------------- FUNCTIONS
