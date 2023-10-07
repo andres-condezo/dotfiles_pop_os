@@ -117,6 +117,8 @@ alias nlint='npm run lint'
 alias nlint:fix='npm run lint:fix'
 alias nstyle='npm run styles'
 alias nstyle:fix='npm run styles:fix'
+alias cat='batcat'
+alias bat='batcat'
 
 #-------------------
 #------------------- FUNCTIONS
@@ -239,7 +241,7 @@ export VISUAL=nvim;
 export EDITOR=nvim;
 export FZF_DEFAULT_COMMAND="fdfind --exclude={.git,.sass-cache} --type f"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# LS_COLORS=$LS_COLORS:'tw=01;35:ow=01;35:' ; export LS_COLORS
+LS_COLORS=$LS_COLORS:'tw=01;35:ow=01;35:' ; export LS_COLORS
 # xsetwacom set "Wacom Intuos S 2 Pen stylus" Button 2 "pan"
 # xsetwacom --set "Wacom Intuos S 2 Pen stylus" "PanScrollThreshold" 200
 #zoxide
