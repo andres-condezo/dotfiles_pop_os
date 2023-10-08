@@ -445,9 +445,9 @@ nnoremap <C-r> :Reload<CR>
 nnoremap <Leader>sc :Colors<CR>
 nnoremap <Leader>sh :History<CR>
 
-nnoremap ms /
-nnoremap me :e .env<CR>
-nnoremap mr :e requests.http<CR>
+nnoremap ,s /
+nnoremap ,e :e .env<CR>
+nnoremap ,r :e requests.http<CR>
 
 nnoremap <C-l> :noh<CR>
 
@@ -861,7 +861,7 @@ let shopping_wiki.ext = '.md'
 let g:vimwiki_list = [personal_wiki, tech_wiki, shopping_wiki]
 let g:vimwiki_markdown_link_ext = 1
 
-let g:vimwiki_listsyms = ' ○◐●✗'
+let g:vimwiki_listsyms = ' ○✗'
 
 "--------------------------------
 "-------------------------------- SESSIONS

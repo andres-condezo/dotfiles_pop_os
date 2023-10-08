@@ -155,9 +155,9 @@ nnoremap <C-r> :Reload<CR>
 nnoremap <Leader>sc :colorscheme <C-z><C-z>
 " nnoremap <Leader>sh :History<CR>
 
-nnoremap ms /
-nnoremap me :e .env<CR>
-nnoremap mr :e requests.http<CR>
+nnoremap ,s /
+nnoremap ,e :e .env<CR>
+nnoremap ,r :e requests.http<CR>
 
 nnoremap <C-l> :noh<CR>
 
@@ -242,12 +242,16 @@ map <S-h> :bprevious<CR>
 map <S-l> :bnext<CR>
 map <Leader>c :bdelete<CR>
 map <Leader>o :on<CR>
+
 " nnoremap <F5> :buffers<CR>:buffer<Space>
-nnoremap <F5> :buffers<CR>:buffer<Space>
+nnoremap <Leader>b :buffers<CR>:buffer<C-Z><Space>
+
 nnoremap <Leader>bv :buffers<CR>:vert sbuffer<Space>
 nnoremap <Leader>bh :buffers<CR>:sbuffer<Space>
 nnoremap <Leader>bd :buffers<CR>:bdelete<Space>
-nnoremap mb :b <C-Z>
+
+" more commands
+" nnoremap mb :b <C-Z>
 
 " let c = 1
 " while c <= 99
