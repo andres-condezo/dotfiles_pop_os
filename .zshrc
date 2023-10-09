@@ -77,6 +77,7 @@ alias vimrc="vim ~/.vimrc"
 alias zrc="v ~/.zshrc"
 alias brc="v ~/.bashrc"
 alias trc="v ~/.tmux.conf"
+alias wrc="v ~/.config/wezterm/wezterm.lua"
 alias x=exit
 alias cli="xclip"
 alias pcli="xclip -out"
@@ -109,13 +110,15 @@ alias dotf2='/media/$USER/d9b427fd-dd9a-43f4-a718-52d7239d54d4/home/user02/Docum
 alias user2='/media/$USER/d9b427fd-dd9a-43f4-a718-52d7239d54d4/home/user02/'
 # Npm scripts
 alias ndev='npm run dev'
-alias nbuild='npm run start'
+alias nbuild='npm run build'
 alias nstart='npm run start'
 alias ntest='npm run test'
 alias nlint='npm run lint'
 alias nlint:fix='npm run lint:fix'
 alias nstyle='npm run styles'
 alias nstyle:fix='npm run styles:fix'
+alias cat='batcat'
+alias bat='batcat'
 
 #-------------------
 #------------------- FUNCTIONS
@@ -173,10 +176,6 @@ rngcd () {
 }
 bindkey -s '^f' 'rngcd\n'
 
-# Tmux
-bindkey -s '^s^s' 'tmux_session_xplorer\n'
-bindkey -s '^s^d' 'tmux_session_xplorer dev\n'
-
 # Codi
 # Usage: codi [filetype] [filename]
 codi() {
@@ -211,6 +210,10 @@ rga-fzf() {
 bindkey '\ey' autosuggest-accept
 # Edit line in vim with ctrl-e:
 bindkey '^e' edit-command-line
+# Tmux
+bindkey -s '^s^s' 'tmux_session_xplorer\n'
+bindkey -s '^s^d' 'tmux_session_xplorer dev\n'
+# bindkey -s '^T' 'nvim-mode\n'
 
 #-------------------
 #-------------------PATHS 
