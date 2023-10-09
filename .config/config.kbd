@@ -1,8 +1,8 @@
 (defcfg
   ;; MAIN
-  ;; input  (device-file "/dev/input/by-id/usb-_USB_Keyboard-event-kbd")
+  input  (device-file "/dev/input/by-id/usb-_USB_Keyboard-event-kbd")
   ;; USB
-  input  (device-file "/dev/input/by-path/platform-i8042-serio-0-event-kbd")
+  ;; input  (device-file "/dev/input/by-path/platform-i8042-serio-0-event-kbd")
   ;; OTHER
   ;; input  (device-file "/dev/input/by-id/usb-SIGMACHIP_USB_Keyboard-event-kbd")
   output (uinput-sink "My KMonad output"
