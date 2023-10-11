@@ -155,6 +155,7 @@ nnoremap <C-r> :Reload<CR>
 nnoremap <Leader>sc :colorscheme <C-z><C-z>
 " nnoremap <Leader>sh :History<CR>
 
+" more commands
 nnoremap ,s /
 nnoremap ,e :e .env<CR>
 nnoremap ,r :e requests.http<CR>
