@@ -182,7 +182,10 @@ Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'vimwiki/vimwiki'
+Plug 'tools-life/taskwiki'
+" Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'liuchengxu/vim-which-key'
+Plug 'blindFS/vim-taskwarrior'
 call plug#end()
 
 "--------------------------------
@@ -445,6 +448,7 @@ nnoremap <C-r> :Reload<CR>
 nnoremap <Leader>sc :Colors<CR>
 nnoremap <Leader>sh :History<CR>
 
+" more commands
 nnoremap ,s /
 nnoremap ,e :e .env<CR>
 nnoremap ,r :e requests.http<CR>
@@ -541,13 +545,15 @@ endif
 function! RelativeNumberToggle()
   set relativenumber!
 endfunction
-noremap <silent> mtn <cmd>call RelativeNumberToggle()<CR>
+" more command
+noremap <silent> ,tn <cmd>call RelativeNumberToggle()<CR>
 
 "Toggle Wrap mode
 function! WrapToggle()
   set wrap!
 endfunction
-noremap <silent> mtw <cmd>call WrapToggle()<CR>
+" more command
+noremap <silent> ,tw <cmd>call WrapToggle()<CR>
 
 function! Test()
   echo "my fun"
@@ -861,7 +867,7 @@ let shopping_wiki.ext = '.md'
 let g:vimwiki_list = [personal_wiki, tech_wiki, shopping_wiki]
 let g:vimwiki_markdown_link_ext = 1
 
-let g:vimwiki_listsyms = ' ○✗'
+" let g:vimwiki_listsyms = ' ○✗'
 
 "--------------------------------
 "-------------------------------- SESSIONS
