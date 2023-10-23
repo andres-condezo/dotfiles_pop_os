@@ -1,7 +1,7 @@
 #!/bin/bash
 sleep 0.5s 
 xdotool key ctrl+a
-xdotool key ctrl+c
+xdotool key ctrl+x
 kitty -- nvim -c startinsert &
 sleep 0.5s 
 xdotool key shift+Insert 

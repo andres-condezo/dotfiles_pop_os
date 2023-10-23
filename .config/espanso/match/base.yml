@@ -15,8 +15,57 @@ matches:
     replace: "ra.condezomonge@gmail.com"
   - trigger: ":mail2"
     replace: "andrescondezomonge@gmail.com"
+    # emojis
   - trigger: ":eyes"
     replace: "👀"
+  - trigger: ":pencil"
+    replace: "✏️"
+  - trigger: ":lgc"
+    replace: "🟢"
+  - trigger: ":lyc"
+    replace: "🟡"
+  - trigger: ":lrc"
+    replace: "🔴"
+  - trigger: ":bug"
+    replace: "🐞"
+  - trigger: ":watch"
+    replace: "🕖"
+  - trigger: ":tool"
+    replace: "🔧"
+  - trigger: ":process"
+    replace: "🚧"
+  - trigger: ":task"
+    replace: "📝"
+  - trigger: ":item"
+    replace: "📍"
+  - trigger: ":pause"
+    replace: "⏸️"
+  - trigger: ":search"
+    replace: "🔍️"
+  - trigger: ":bdot"
+    replace: "🔹"
+  - trigger: ":tip"
+    replace: "💡"
+  - trigger: ":pin"
+    replace: "📌"
+  - trigger: ":itest"
+    replace: "🧪"
+  - trigger: ":warn"
+    replace: "⚠️"
+  - trigger: ":check"
+    replace: "✅"
+  - trigger: ":repeat"
+    replace: "🔁"
+  - trigger: ":tag"
+    replace: "🏷️"
+  - trigger: ":project"
+    replace: "🗃️"
+
+  # tags
+  - trigger: ":ttest"
+    replace: "🧪test"
+
+
   # Auto close brackets, quotes and formatting modifiers, and put cursor in center
   - trigger: ":("
     replace: "($|$)"
@@ -39,9 +88,7 @@ matches:
   - trigger: ':-'
     replace: '-$|$-'
   # Print the current date
-  - trigger: ":date"
-    # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
-
+  - trigger: ":date1"
     # But matches can also be dynamic:
     replace: "{{mydate}}"
     vars:
@@ -49,6 +96,25 @@ matches:
         type: date
         params:
           format: "%m/%d/%Y"
+  # Print the current date
+  - trigger: ":date2"
+    # But matches can also be dynamic:
+    replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%Y-%m-%d"
+  # Print the current date
+  - trigger: ":date3"
+    # But matches can also be dynamic:
+    replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%B %d, %Y"
+
   # Print the output of a shell command
   - trigger: ":shell"
     replace: "{{output}}"
