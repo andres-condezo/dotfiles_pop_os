@@ -1,5 +1,5 @@
 # espanso configuration file
-disable_x11_fast_inject: true
+disable_x11_fast_inject: false
 
 # For a complete introduction, visit the official docs at: https://espanso.org/docs/
 
