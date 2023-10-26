@@ -1,0 +1,20 @@
+#!/bin/bash
+
+commit_and_push() {
+    local directory=$1
+    local message=$2
+
+    cd "$directory" || { echo "ERROR"; exit; }
+    git add .
+    git commit -m "$message"
+    git push origin main
+}
+
+paths=("/home/adrs/vimwiki/personal" "/home/adrs/.task/")
+cdate=$(date +'%Y-%m-%d %H:%M:%S')
+
+for path in "${paths[@]}"
+do
+    commit_and_push "$path" "Feat: Update $cdate"
+done
+
