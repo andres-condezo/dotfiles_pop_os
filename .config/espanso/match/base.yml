@@ -9,6 +9,10 @@
 # it gets replaced by the "replace" string.
 matches:
   # Simple text replacement
+  - trigger: ":lfm"
+    replace: "loki-framex400"
+  - trigger: ":fm"
+    replace: "-frame|400"
   - trigger: ":espanso"
     replace: "Hi there!"
   - trigger: ":mail1"

@@ -1,8 +1,9 @@
 #!/bin/bash
 
 paths=(
-    "/home/adrs/vimwiki/personal"
     "/home/adrs/.task/"
+    "/home/adrs/.timewarrior/"
+    "/media/adrs/TOSHIBA/vimwiki/personal/"
 )
 cdate=$(date +'%Y-%m-%d %H:%M:%S')
 

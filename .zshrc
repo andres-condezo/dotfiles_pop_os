@@ -100,7 +100,7 @@ alias kmd='sudo /etc/sv/kmonad/run'
 alias dvm='cd /home/$USER/Documents/development'
 alias fd='fdfind'
 alias dv='fd --type f --hidden --exclude .git | fzf-tmux -p --reverse | xargs nvim'
-alias rvim='sudo vim -u ~/.rvimrc'
+alias rvim='sudo vim -u /home/adrs/Documents/dotfiles_pop_os/.rvimrc'
 alias svim='sudo -E vim'
 alias t='tmux_new'
 alias dotf='cd /home/$USER/Documents/dotfiles_pop_os/' 
@@ -119,6 +119,8 @@ alias nstyle='npm run styles'
 alias nstyle:fix='npm run styles:fix'
 alias cat='batcat'
 alias bat='batcat'
+alias wk="pomodoro 'work'"
+alias br="pomodoro 'break'"
 
 #-------------------
 #------------------- FUNCTIONS
@@ -223,6 +225,9 @@ export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
 export PATH="/home/$USER/.local/bin:$PATH"
 export PATH="/home/$USER/.cargo/bin:$PATH"
 export PATH=$PATH:"/home/$USER/Documents/dotfiles_pop_os/.scripts/"
+
+export DENO_INSTALL="/home/adrs/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
 
 #-------------------
 #-------------------VERSION MANAGERS 

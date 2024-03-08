@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ -n "$1" ]; then
+  val=$1
+  if [ -z "$2" ]; then
+    time=$(if [ "$val" = "work" ]; then echo 45; else echo 10; fi)
+  else
+    time=$2
+  fi
+  echo "$val" | lolcat
+  timer "${time}m"
+  notify-send -i ~/Pictures/pomodoro.png "'$val' session done"
+  echo "{'Date':'$(date)', 'Type':'$val', 'Duration':'$time'}" >> ~/pomodoro.data
+  spd-say "'$val' session done"
+fi
