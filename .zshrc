@@ -247,8 +247,11 @@ export EDITOR=nvim;
 export FZF_DEFAULT_COMMAND="fdfind --exclude={.git,.sass-cache} --type f"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 LS_COLORS=$LS_COLORS:'tw=01;35:ow=01;35:' ; export LS_COLORS
-xsetwacom set "Wacom Intuos S 2 Pen stylus" Button 2 "pan"
-xsetwacom --set "Wacom Intuos S 2 Pen stylus" "PanScrollThreshold" 200
+
+# wacom
+# xsetwacom set "Wacom Intuos S 2 Pen stylus" Button 2 "pan"
+# xsetwacom --set "Wacom Intuos S 2 Pen stylus" "PanScrollThreshold" 200
+
 #zoxide
 eval "$(zoxide init zsh)"
 # Load Angular CLI autocompletion.
